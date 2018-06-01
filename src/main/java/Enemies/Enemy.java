@@ -5,7 +5,7 @@ import behaviours.IAttack;
 import utils.Dice;
 
 public abstract class Enemy implements IAttack, Attackable{
-    private int hp;
+    protected int hp;
     private int armourClass;
     private int damageRoll;
 
