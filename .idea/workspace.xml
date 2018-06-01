@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee850446-1034-40d8-90c7-360b2c66b607" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/Arena_main.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/Arena_test.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/utils/Dice.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/DiceTest.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Arena.iml" afterPath="$PROJECT_DIR$/.idea/modules/Arena.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/enums/Consumable.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/TestConsumable.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -65,11 +56,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DiceTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DiceTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/DiceTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="214">
+              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Consumable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/enums/Consumable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestConsumable.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/TestConsumable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,6 +95,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -505,6 +519,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/utils/Dice.java" />
         <option value="$PROJECT_DIR$/src/test/java/DiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/enums/Consumable.java" />
+        <option value="$PROJECT_DIR$/src/test/java/TestConsumable.java" />
       </list>
     </option>
   </component>
@@ -562,6 +578,14 @@
               <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
               <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -596,7 +620,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DiceTest">
+  <component name="RunManager" selected="JUnit.TestConsumable">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -675,6 +699,26 @@
       <envs />
       <patterns />
     </configuration>
+    <configuration name="TestConsumable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="Arena_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestConsumable" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -735,15 +779,17 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Gradle.Plugin" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.DiceTest.canRollD20" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.DiceTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestConsumable" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.DiceTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DiceTest.canRollD20" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestConsumable" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DiceTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DiceTest.canRollD20" />
       </list>
     </recent_temporary>
   </component>
@@ -769,6 +815,9 @@
     </history-entry>
     <history-entry file="DiceTest_canRollD20 - 2018.06.01 at 16h 04m 12s.xml">
       <configuration name="DiceTest.canRollD20" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestConsumable - 2018.06.01 at 16h 20m 37s.xml">
+      <configuration name="TestConsumable" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -842,8 +891,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/DiceTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="214">
+          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/enums/Consumable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestConsumable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
