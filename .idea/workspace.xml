@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee850446-1034-40d8-90c7-360b2c66b607" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/characters/Character.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/characters/players/Mage.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/characters/players/Player.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/characters/players/Ranger.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/characters/players/Warrior.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/CharacterTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/MageTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/RangerTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/WarriorTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Runner.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Enemies/Enemy.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Enemies/Goblin.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/EnemyTest.class" afterPath="$PROJECT_DIR$/out/test/classes/EnemyTest.class" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/GoblinTest.class" afterPath="$PROJECT_DIR$/out/test/classes/GoblinTest.class" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/TestConsumable.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/helpers/TestEnemy.class" afterPath="$PROJECT_DIR$/out/test/classes/helpers/TestEnemy.class" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Enemies/Enemy.java" afterPath="$PROJECT_DIR$/src/main/java/characters/enemies/Enemy.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Enemies/Goblin.java" afterPath="$PROJECT_DIR$/src/main/java/characters/enemies/Goblin.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EnemyTest.java" afterPath="$PROJECT_DIR$/src/test/java/EnemyTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GoblinTest.java" afterPath="$PROJECT_DIR$/src/test/java/GoblinTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestConsumable.java" afterPath="$PROJECT_DIR$/src/test/java/ConsumableTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/helpers/TestEnemy.java" afterPath="$PROJECT_DIR$/src/test/java/helpers/TestEnemy.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -43,23 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DiceTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/DiceTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WarriorTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WarriorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/WarriorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="270">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#214#215#0" expanded="true" />
@@ -70,6 +37,18 @@
                 <element signature="e#446#447#0" expanded="true" />
                 <element signature="e#497#498#0" expanded="true" />
                 <element signature="e#553#554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Runner.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="95" column="48" lean-forward="false" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -210,14 +189,14 @@
     <findStrings>
       <find>TestCharacter</find>
       <find>Goblin</find>
-      <find>Ranger</find>
       <find>mage</find>
+      <find>Ranger</find>
     </findStrings>
     <replaceStrings>
       <replace>TestEnemy</replace>
       <replace>Mage</replace>
-      <replace>Warrior</replace>
       <replace>ranger</replace>
+      <replace>Warrior</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -664,6 +643,7 @@
         <option value="$PROJECT_DIR$/src/test/java/MageTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/RangerTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/WarriorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Runner.java" />
       </list>
     </option>
   </component>
@@ -718,69 +698,6 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="behaviours" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="characters" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="characters" type="462c0819:PsiDirectoryNode" />
-              <item name="enemies" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="characters" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Arena" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Arena" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -805,12 +722,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in Arena_test (1)">
+  <component name="RunManager" selected="Application.Runner">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="Runner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Runner" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Arena_main" />
+      <envs />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -891,26 +822,6 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="CharacterTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="EnemyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="Arena_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="EnemyTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -1006,19 +917,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Gradle.Plugin" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.EnemyTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.All in Arena_test" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.CharacterTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PlayerTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.All in Arena_test (1)" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in Arena_test" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.CharacterTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.PlayerTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.All in Arena_test (1)" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Runner" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.All in Arena_test (1)" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PlayerTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.CharacterTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.All in Arena_test" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.EnemyTest" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Runner" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.All in Arena_test (1)" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.PlayerTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.CharacterTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.All in Arena_test" />
       </list>
     </recent_temporary>
   </component>
@@ -1108,7 +1019,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1367,7 +1278,7 @@
         <state relative-caret-position="225">
           <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1478,8 +1389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/WarriorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+        <state relative-caret-position="270">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#214#215#0" expanded="true" />
@@ -1490,6 +1401,16 @@
             <element signature="e#446#447#0" expanded="true" />
             <element signature="e#497#498#0" expanded="true" />
             <element signature="e#553#554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="95" column="48" lean-forward="false" selection-start-line="95" selection-start-column="48" selection-end-line="95" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
