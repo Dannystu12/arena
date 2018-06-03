@@ -1,16 +1,19 @@
-package Enemies;
+package characters;
 
 import behaviours.Attackable;
 import behaviours.IAttack;
 import utils.Dice;
 
-public abstract class Enemy implements IAttack, Attackable{
+public abstract class Character implements IAttack, Attackable {
+
     protected int hp;
+    protected final int MAX_HP;
     private int armourClass;
     private int damageRoll;
 
-    public Enemy(int hp, int armourClass, int damageRoll) {
+    public Character(int hp, int armourClass, int damageRoll){
         this.hp = hp;
+        this.MAX_HP = hp;
         this.armourClass = armourClass;
         this.damageRoll = damageRoll;
     }
@@ -23,29 +26,34 @@ public abstract class Enemy implements IAttack, Attackable{
         return damageRoll;
     }
 
+    public int getMAX_HP() {
+        return MAX_HP;
+    }
+
     @Override
     public int getArmourClass() {
         return armourClass;
     }
 
     @Override
-    public boolean isAlive(){
+    public boolean isAlive() {
         return hp > 0;
     }
 
     @Override
-    public boolean isDead(){
+    public boolean isDead() {
         return !isAlive();
     }
 
     @Override
-    public void takeDamage(int damage){
-        damage = Math.min(damage, hp);
+    public void takeDamage(int damage) {
+        damage = Math.min(hp, damage);
         hp -= damage;
+
     }
 
     @Override
-    public void attack(Attackable attackable){
+    public void attack(Attackable attackable) {
         int hitRoll = Dice.roll(20);
         if(hitRoll < attackable.getArmourClass()) return;
 
@@ -60,6 +68,4 @@ public abstract class Enemy implements IAttack, Attackable{
     private int getDamage(){
         return Dice.roll(damageRoll);
     }
-
-
 }

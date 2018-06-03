@@ -1,6 +1,6 @@
 package helpers;
 
-import Enemies.Enemy;
+import characters.enemies.Enemy;
 
 public class TestEnemy extends Enemy {
 

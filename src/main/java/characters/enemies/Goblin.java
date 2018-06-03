@@ -1,4 +1,4 @@
-package Enemies;
+package characters.enemies;
 
 import utils.Dice;
 

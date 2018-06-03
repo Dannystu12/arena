@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 
-public class TestConsumable {
+public class ConsumableTest {
 
     @Test
     public void canGetEffectFromHealthPotion(){
