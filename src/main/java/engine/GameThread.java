@@ -18,8 +18,8 @@ public class GameThread extends JPanel implements Runnable {
             try{
                 if(game.getScreenFactory().getCurrentScreen() != null){
                     game.getScreenFactory().getCurrentScreen().onUpdate();
-                    Thread.sleep(10); // Sets fps
                 }
+                Thread.sleep(10); // Sets fps
             } catch (Exception e) {
                 e.printStackTrace();
             }

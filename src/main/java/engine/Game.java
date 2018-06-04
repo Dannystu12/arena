@@ -1,8 +1,9 @@
 package engine;
 
+import engine.input.KeyboardListener;
+import engine.input.MousepadListener;
+
 import javax.swing.*;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseListener;
 
 public class Game {
 
@@ -20,7 +21,6 @@ public class Game {
         window.setFocusable(true); //Allows frame to get input
         window.setLocationRelativeTo(null); //Center frame in screen
         window.setTitle(title);
-        window.setVisible(true);
         screenFactory = new ScreenFactory(this);
         gameThread = new GameThread(this);
         window.add(gameThread);
@@ -34,6 +34,7 @@ public class Game {
         window.addMouseListener(mousepadListener);
 
         new Thread(gameThread).start();
+        window.setVisible(true);
     }
 
     public JFrame getWindow(){
@@ -44,11 +45,11 @@ public class Game {
         return screenFactory;
     }
 
-    public KeyListener getKeyboardListener(){
+    public KeyboardListener getKeyboardListener(){
         return keyboardListener;
     }
 
-    public MouseListener getMouseListener(){
+    public MousepadListener getMouseListener(){
         return mousepadListener;
     }
 }

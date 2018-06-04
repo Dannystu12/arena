@@ -18,4 +18,8 @@ public class ScreenFactory {
         return screen;
     }
 
+    public Game getGame(){
+        return game;
+    }
+
 }
