@@ -1,4 +1,4 @@
-import characters.players.Ranger;
+import models.characters.players.Ranger;
 import org.junit.Before;
 import org.junit.Test;
 

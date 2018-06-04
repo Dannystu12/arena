@@ -1,4 +1,4 @@
-import characters.enemies.Goblin;
+import models.characters.enemies.Goblin;
 import org.junit.Before;
 import org.junit.Test;
 

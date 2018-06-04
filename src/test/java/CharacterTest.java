@@ -1,5 +1,5 @@
-import characters.Character;
-import characters.enemies.Goblin;
+import models.characters.Character;
+import models.characters.enemies.Goblin;
 import helpers.TestEnemy;
 import org.junit.Before;
 import org.junit.Test;

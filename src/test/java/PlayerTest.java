@@ -1,6 +1,6 @@
-import characters.players.Player;
-import characters.players.Warrior;
-import enums.Consumable;
+import models.characters.players.Player;
+import models.characters.players.Warrior;
+import models.enums.Consumable;
 import org.junit.Before;
 import org.junit.Test;
 

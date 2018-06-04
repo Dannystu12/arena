@@ -1,4 +1,4 @@
-import enums.Consumable;
+import models.enums.Consumable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

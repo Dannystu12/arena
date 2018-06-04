@@ -1,6 +1,6 @@
 package helpers;
 
-import characters.enemies.Enemy;
+import models.characters.enemies.Enemy;
 
 public class TestEnemy extends Enemy {
 

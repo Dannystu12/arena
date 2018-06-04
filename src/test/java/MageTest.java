@@ -1,4 +1,4 @@
-import characters.players.Mage;
+import models.characters.players.Mage;
 import org.junit.Before;
 import org.junit.Test;
 

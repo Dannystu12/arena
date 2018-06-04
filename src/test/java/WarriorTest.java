@@ -1,4 +1,4 @@
-import characters.players.Warrior;
+import models.characters.players.Warrior;
 import org.junit.Before;
 import org.junit.Test;
 

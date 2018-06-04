@@ -1,5 +1,5 @@
 import org.junit.Test;
-import utils.Dice;
+import models.utils.Dice;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
