@@ -4,6 +4,7 @@ import engine.Screen;
 import engine.sprite.Animator;
 import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
+import game.ArenaScreen;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,32 +14,46 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SlimeSprite {
+public class SlimeSprite extends Sprite implements Collidable{
 
-    private Screen screen;
-    private int x;
-    private int y;
     private final int MOVE_AMOUNT = 1;
     private final String SPRITE_SHEET_PATH = "/sprites/enemies/slime/chara_slime.png";
     private Animator currentAnimation;
     private Random rng;
     private final int TIME_BETWEEN_ATTACKS = 1000;
     private long lastAttack;
+    private final int SCALE_FACTOR = 2;
+
 
     private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT;
     private ArrayList<Animator> dontInterrupt;
 
     public SlimeSprite(Screen screen, int x, int y){
-        this.screen = screen;
-        this.x = x;
-        this.y = y;
-        init();
+        super(screen, x, y);
         rng = new Random();
         lastAttack = System.currentTimeMillis();
         currentAnimation.start();
     }
 
-    private void init(){
+    @Override
+    public Rectangle getBounds(){
+        //Gets inner 16 x 16 collision box
+        int w = currentAnimation.getSprite().getWidth() * SCALE_FACTOR  /3;
+        int h = currentAnimation.getSprite().getHeight() * SCALE_FACTOR /3;
+        return new Rectangle(x + w,y + h, w, h);
+    }
+
+    public boolean checkCollisions(){
+        ArrayList<Collidable> collidables= ((ArenaScreen) screen).getCollidables();
+        for(Collidable collidable : collidables){
+            if(collidable != this && getBounds().intersects(collidable.getBounds())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected void init(){
         try {
             BufferedImageLoader loader = new BufferedImageLoader();
             BufferedImage spritesheet = loader.loadImage(SPRITE_SHEET_PATH);
@@ -66,26 +81,6 @@ public class SlimeSprite {
         }
     }
 
-    private Animator getAnimator(SpriteSheet ss, int row, int numImages, int width, int height, long speed, boolean flip,
-                                 boolean loop){
-        ArrayList<BufferedImage> frames = new ArrayList<>();
-
-
-        for(int i = 0; i < numImages; i++){
-            int x = i * width ;
-            int y = row * height;
-            BufferedImage sprite = ss.grabSprite(x, y, width, height);
-            if(flip){
-                AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
-                tx.translate(-sprite.getWidth(null), 0);
-                AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-                sprite = op.filter(sprite, null);
-            }
-            frames.add(sprite);
-        }
-
-        return new Animator(frames, speed, loop);
-    }
 
     public void onUpdate(PlayerSprite player) {
 
@@ -103,6 +98,9 @@ public class SlimeSprite {
                         currentAnimation.start();
                     }
                     x -= MOVE_AMOUNT;
+                    if(checkCollisions()){
+                        x += MOVE_AMOUNT;
+                    }
                 } else {
                     if(currentAnimation != WALK_RIGHT && !dontInterrupt.contains(currentAnimation) || !currentAnimation.isRunning()){
                         currentAnimation.stop();
@@ -110,6 +108,9 @@ public class SlimeSprite {
                         currentAnimation.start();
                     }
                     x += MOVE_AMOUNT;
+                    if(checkCollisions()){
+                        x -= MOVE_AMOUNT;
+                    }
                 }
             } else {
                 if(dy < 0){
@@ -119,6 +120,9 @@ public class SlimeSprite {
                         currentAnimation.start();
                     }
                     y -= MOVE_AMOUNT;
+                    if(checkCollisions()){
+                        y += MOVE_AMOUNT;
+                    }
                 } else {
                     if(currentAnimation != WALK_DOWN && !dontInterrupt.contains(currentAnimation) || !currentAnimation.isRunning()){
                         currentAnimation.stop();
@@ -126,6 +130,9 @@ public class SlimeSprite {
                         currentAnimation.start();
                     }
                     y += MOVE_AMOUNT;
+                    if(checkCollisions()){
+                        y -= MOVE_AMOUNT;
+                    }
                 }
 
             }
@@ -183,11 +190,12 @@ public class SlimeSprite {
 
     }
 
+    @Override
     public void onDraw(Graphics2D g2d) {
         currentAnimation.update(System.currentTimeMillis());
         g2d.drawImage(currentAnimation.getSprite(), x, y,
-                currentAnimation.getSprite().getWidth() * 2,
-                currentAnimation.getSprite().getHeight()* 2, null);
+                currentAnimation.getSprite().getWidth() * SCALE_FACTOR,
+                currentAnimation.getSprite().getHeight()* SCALE_FACTOR, null);
     }
 
 

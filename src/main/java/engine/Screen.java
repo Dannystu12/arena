@@ -1,6 +1,9 @@
 package engine;
 
+import game.sprites.SlimeSprite;
+
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class Screen {
 
@@ -19,4 +22,5 @@ public abstract class Screen {
     public ScreenFactory getScreenFactory() {
         return screenFactory;
     }
+
 }
