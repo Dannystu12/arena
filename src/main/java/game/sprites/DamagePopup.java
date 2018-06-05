@@ -14,13 +14,12 @@ public class DamagePopup {
     private long initTime;
     private int duration = 750;
     private boolean isComplete = false;
-    private Screen screen;
+    private static final Font font = new Font("Helvetica", Font.BOLD, 12);
 
-    public DamagePopup(int value, int x, int y, Screen screen){
+    public DamagePopup(int value, int x, int y){
         this.x = x;
         this.y = y;
         this.initTime = System.currentTimeMillis();
-        this.screen = screen;
         this.value = value;
     }
 
@@ -43,7 +42,7 @@ public class DamagePopup {
             g2d.setColor(Color.decode("#8c1d04"));
         }
 
-        g2d.setFont(new Font("Helvetica", Font.BOLD, 12));
+        g2d.setFont(font);
         g2d.drawString(Integer.toString(value), x, y);
     }
 

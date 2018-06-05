@@ -10,9 +10,6 @@ import models.characters.enemies.Slime;
 import models.characters.players.Player;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
@@ -124,8 +121,7 @@ public class SlimeSprite extends Sprite implements Collidable{
                 ((ArenaScreen) screen).addDamagePopup(
                         new DamagePopup(healthBefore - healthAfter,
                                 ps.getCenterX(),
-                                ps.getCenterY(),
-                                screen));
+                                ps.getCenterY()));
             }
 
         }

@@ -12,10 +12,10 @@ import models.characters.enemies.Slime;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ListIterator;
-import java.util.Random;
+import java.awt.font.FontRenderContext;
+import java.awt.font.TextLayout;
+import java.awt.geom.Rectangle2D;
+import java.util.*;
 
 public class ArenaScreen extends Screen {
 
@@ -28,6 +28,7 @@ public class ArenaScreen extends Screen {
     private int enemyCount = 2;
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 600;
+    private static final Font font = new Font("Helvetica", Font.BOLD, 12);
 
     public ArenaScreen(ScreenFactory screenFactory) {
         super(screenFactory);
@@ -45,10 +46,6 @@ public class ArenaScreen extends Screen {
 
     public void addDamagePopup(DamagePopup dp){
         damagePopups.add(dp);
-    }
-
-    public void removeDamagePopup(DamagePopup dp){
-        damagePopups.remove(dp);
     }
 
     private int getSpawnX(){
@@ -100,23 +97,39 @@ public class ArenaScreen extends Screen {
 
     @Override
     public void onUpdate() {
-        Iterator itr = damagePopups.iterator();
-        while(itr.hasNext()){
-            ((DamagePopup) itr.next()).onUpdate();
+        if(player.getPlayer().isDead()) return;
+
+        for(int i = 0; i < damagePopups.size(); i++){
+            DamagePopup d = damagePopups.get(i);
+            d.onUpdate();
         }
 
         player.onUpdate();
 
-        itr = enemies.listIterator();
-        while(itr.hasNext()){
-            SlimeSprite slime = (SlimeSprite) itr.next();
+
+        for(int i = 0; i < enemies.size(); i++){
+            SlimeSprite slime = enemies.get(i);
             if(slime.getEnemy().isDead()){
-                itr.remove();
+                enemies.set(i, null);
             } else {
                 slime.onUpdate(player);
             }
-            
         }
+
+        //cleanup null references in enemies
+        enemies.removeIf(Objects::isNull);
+
+        //Cleanup collidables for deleted enemies
+        for(int i = 0; i < collidables.size(); i++){
+            Collidable c = collidables.get(i);
+            if(c instanceof SlimeSprite && !enemies.contains(c)){
+                collidables.set(i, null);
+            }
+        }
+
+        //cleanup null references in collidables
+        collidables.removeIf(Objects::isNull);
+
     }
 
     @Override
@@ -126,14 +139,31 @@ public class ArenaScreen extends Screen {
         }
         player.onDraw(g2d);
 
-        ListIterator itr = damagePopups.listIterator();
-        while(itr.hasNext()){
-            DamagePopup dp = ((DamagePopup) itr.next());
+        for(int i = 0; i < damagePopups.size(); i++){
+            DamagePopup dp = damagePopups.get(i);
             if(dp.isComplete()){
-                itr.remove();
-            }else{
+                damagePopups.set(i, null);
+            } else {
                 dp.onDraw(g2d);
             }
         }
+
+        //cleanup null references in popups
+        damagePopups.removeIf(Objects::isNull);
+
+
+        if(player.getPlayer().isDead()){
+            drawCenteredString(g2d, "Game Over", new Rectangle(SCREEN_WIDTH, SCREEN_HEIGHT),
+                    font);
+        }
     }
+
+    public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
+        FontMetrics metrics = g.getFontMetrics(font);
+        int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
+        int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+        g.setFont(font);
+        g.drawString(text, x, y);
+    }
+
 }

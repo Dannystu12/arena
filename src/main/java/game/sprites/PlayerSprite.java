@@ -66,8 +66,7 @@ public class PlayerSprite extends Sprite implements Collidable{
                     ((ArenaScreen) screen).addDamagePopup(
                             new DamagePopup(healthBefore - healthAfter,
                                     enemy.getCenterX(),
-                                    enemy.getCenterY(),
-                                    screen));
+                                    enemy.getCenterY()));
                 }
             }
         }
