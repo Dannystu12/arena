@@ -5,6 +5,9 @@ import engine.sprite.Animator;
 import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
+import models.characters.enemies.Enemy;
+import models.characters.players.Player;
+import models.characters.players.Warrior;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -17,13 +20,20 @@ public class PlayerSprite extends Sprite implements Collidable{
     private final String SPRITE_SHEET_PATH = "/sprites/hero/chara_hero.png";
     private final int SCALE_FACTOR = 2;
     private Animator currentAnimation;
+    private Player player;
 
-    private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT;
+    private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
+            HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW;
     private ArrayList<Animator> dontInterrupt;
 
     public PlayerSprite(Screen screen, int x, int y){
         super(screen,x, y);
+        player = new Warrior();
         currentAnimation.start();
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 
     public boolean checkCollisions(){
@@ -34,6 +44,33 @@ public class PlayerSprite extends Sprite implements Collidable{
             }
         }
         return false;
+    }
+
+    public int getCenterX(){
+        return x + currentAnimation.getSprite().getWidth() * SCALE_FACTOR / 2;
+    }
+
+    public int getCenterY(){
+        return y + currentAnimation.getSprite().getHeight() * SCALE_FACTOR / 2;
+    }
+
+    public void attack(Rectangle attackBox, Direction direction){
+        for(SlimeSprite enemy : ((ArenaScreen) screen).getEnemies()){
+            if(attackBox.intersects(enemy.getBounds())){
+                Enemy e = enemy.getEnemy();
+                int healthBefore = e.getHp();
+                player.attack(enemy.getEnemy());
+                int healthAfter = e.getHp();
+                if(healthBefore > healthAfter){
+                    enemy.takeHit(direction);
+                    ((ArenaScreen) screen).addDamagePopup(
+                            new DamagePopup(healthBefore - healthAfter,
+                                    enemy.getCenterX(),
+                                    enemy.getCenterY(),
+                                    screen));
+                }
+            }
+        }
     }
 
     @Override
@@ -59,6 +96,11 @@ public class PlayerSprite extends Sprite implements Collidable{
             ATTACK_DOWN = getAnimator(ss, 5, 4,  48, 48,100, false, false);
             ATTACK_LEFT = getAnimator(ss, 6, 4,  48, 48,100, true, false);
             ATTACK_RIGHT = getAnimator(ss, 6, 4, 48, 48,100, false, false);
+            HIT_FROM_LEFT = getAnimator(ss, 9, 4, 48, 48,100, true, false);
+            HIT_FROM_RIGHT = getAnimator(ss, 9, 4, 48, 48,100, false, false);
+            HIT_FROM_ABOVE = getAnimator(ss, 10, 4, 48, 48,100, false, false);
+            HIT_FROM_BELOW = getAnimator(ss, 8, 4, 48, 48,100, false, false);
+
 
             //Create an array list in which certain animations cannot be interrupted
             dontInterrupt = new ArrayList<>();
@@ -66,11 +108,36 @@ public class PlayerSprite extends Sprite implements Collidable{
             dontInterrupt.add(ATTACK_DOWN);
             dontInterrupt.add(ATTACK_LEFT);
             dontInterrupt.add(ATTACK_RIGHT);
+            dontInterrupt.add(HIT_FROM_LEFT);
+            dontInterrupt.add(HIT_FROM_RIGHT);
+            dontInterrupt.add(HIT_FROM_ABOVE);
+            dontInterrupt.add(HIT_FROM_BELOW);
 
             currentAnimation = IDLE;
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void takeHit(Direction d){
+        currentAnimation.stop();
+        switch(d){
+            case UP:
+                currentAnimation = HIT_FROM_BELOW;
+                break;
+            case DOWN:
+                currentAnimation = HIT_FROM_ABOVE;
+                break;
+            case LEFT:
+                currentAnimation = HIT_FROM_RIGHT;
+                break;
+            case RIGHT:
+                currentAnimation = HIT_FROM_LEFT;
+                break;
+        }
+
+        currentAnimation.start();
+
     }
 
     public void onUpdate() {
@@ -80,6 +147,7 @@ public class PlayerSprite extends Sprite implements Collidable{
             currentAnimation.stop();
             currentAnimation = ATTACK_UP;
             currentAnimation.start();
+            attack(new Rectangle(x + 16 * SCALE_FACTOR, y, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.UP);
         }
     } else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_DOWN)
                 && !dontInterrupt.contains(currentAnimation)){
@@ -87,6 +155,7 @@ public class PlayerSprite extends Sprite implements Collidable{
             currentAnimation.stop();
             currentAnimation = ATTACK_DOWN;
             currentAnimation.start();
+            attack(new Rectangle(x + 16 * SCALE_FACTOR, y + 16 * SCALE_FACTOR * 2, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.DOWN);
         }
     }else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_LEFT)
                 && !dontInterrupt.contains(currentAnimation)) {
@@ -94,6 +163,7 @@ public class PlayerSprite extends Sprite implements Collidable{
             currentAnimation.stop();
             currentAnimation = ATTACK_LEFT;
             currentAnimation.start();
+            attack(new Rectangle(x, y + 16 * SCALE_FACTOR, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.LEFT);
         }
     }else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_RIGHT))
 
@@ -102,6 +172,7 @@ public class PlayerSprite extends Sprite implements Collidable{
             currentAnimation.stop();
             currentAnimation = ATTACK_RIGHT;
             currentAnimation.start();
+            attack(new Rectangle(x + 16 * SCALE_FACTOR * 2, y + 16 * SCALE_FACTOR, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.RIGHT);
         }
     }else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_A)
                 && !dontInterrupt.contains(currentAnimation)){

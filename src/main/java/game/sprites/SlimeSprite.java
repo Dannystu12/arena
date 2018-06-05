@@ -5,6 +5,9 @@ import engine.sprite.Animator;
 import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
+import models.characters.enemies.Enemy;
+import models.characters.enemies.Slime;
+import models.characters.players.Player;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -23,16 +26,32 @@ public class SlimeSprite extends Sprite implements Collidable{
     private final int TIME_BETWEEN_ATTACKS = 1000;
     private long lastAttack;
     private final int SCALE_FACTOR = 2;
+    private Enemy enemy;
 
 
-    private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT;
+    private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
+        HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW;
+
     private ArrayList<Animator> dontInterrupt;
 
     public SlimeSprite(Screen screen, int x, int y){
         super(screen, x, y);
         rng = new Random();
+        enemy = new Slime();
         lastAttack = System.currentTimeMillis();
         currentAnimation.start();
+    }
+
+    public int getCenterX(){
+        return x + currentAnimation.getSprite().getWidth() * SCALE_FACTOR / 2;
+    }
+
+    public int getCenterY(){
+        return y + currentAnimation.getSprite().getHeight() * SCALE_FACTOR / 2;
+    }
+
+    public Enemy getEnemy(){
+        return enemy;
     }
 
     @Override
@@ -67,6 +86,12 @@ public class SlimeSprite extends Sprite implements Collidable{
             ATTACK_DOWN = getAnimator(ss, 5, 4,  48, 48,100, false, false);
             ATTACK_LEFT = getAnimator(ss, 6, 4,  48, 48,100, true, false);
             ATTACK_RIGHT = getAnimator(ss, 6, 4, 48, 48,100, false, false);
+            HIT_FROM_LEFT = getAnimator(ss, 9, 4, 48, 48,100, true, false);
+            HIT_FROM_RIGHT = getAnimator(ss, 9, 4, 48, 48,100, false, false);
+            HIT_FROM_ABOVE = getAnimator(ss, 10, 4, 48, 48,100, false, false);
+            HIT_FROM_BELOW = getAnimator(ss, 8, 4, 48, 48,100, false, false);
+
+
 
             //Create an array list in which certain animations cannot be interrupted
             dontInterrupt = new ArrayList<>();
@@ -74,11 +99,57 @@ public class SlimeSprite extends Sprite implements Collidable{
             dontInterrupt.add(ATTACK_DOWN);
             dontInterrupt.add(ATTACK_LEFT);
             dontInterrupt.add(ATTACK_RIGHT);
+            dontInterrupt.add(HIT_FROM_LEFT);
+            dontInterrupt.add(HIT_FROM_RIGHT);
+            dontInterrupt.add(HIT_FROM_ABOVE);
+            dontInterrupt.add(HIT_FROM_BELOW);
 
             currentAnimation = IDLE;
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+
+
+    public void attack(Rectangle attackBox, Direction direction){
+        PlayerSprite ps = ((ArenaScreen) screen).getPlayer();
+        if(attackBox.intersects(ps.getBounds())) {
+            Player p = ps.getPlayer();
+            int healthBefore = p.getHp();
+            enemy.attack(p);
+            int healthAfter = p.getHp();
+            if (healthBefore > healthAfter) {
+                ps.takeHit(direction);
+                ((ArenaScreen) screen).addDamagePopup(
+                        new DamagePopup(healthBefore - healthAfter,
+                                ps.getCenterX(),
+                                ps.getCenterY(),
+                                screen));
+            }
+
+        }
+    }
+
+    public void takeHit(Direction d){
+        currentAnimation.stop();
+        switch(d){
+            case UP:
+                currentAnimation = HIT_FROM_BELOW;
+                break;
+            case DOWN:
+                currentAnimation = HIT_FROM_ABOVE;
+                break;
+            case LEFT:
+                currentAnimation = HIT_FROM_RIGHT;
+                break;
+            case RIGHT:
+                currentAnimation = HIT_FROM_LEFT;
+                break;
+        }
+
+        currentAnimation.start();
+
     }
 
 
@@ -146,6 +217,7 @@ public class SlimeSprite extends Sprite implements Collidable{
                         currentAnimation = ATTACK_LEFT;
                         currentAnimation.start();
                         lastAttack = System.currentTimeMillis();
+                        attack(new Rectangle(x, y + 16 * SCALE_FACTOR, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.LEFT);
                     }
                 } else {
                     if(!dontInterrupt.contains(currentAnimation) || !currentAnimation.isRunning()){
@@ -153,7 +225,7 @@ public class SlimeSprite extends Sprite implements Collidable{
                         currentAnimation = ATTACK_RIGHT;
                         currentAnimation.start();
                         lastAttack = System.currentTimeMillis();
-
+                        attack(new Rectangle(x + 16 * SCALE_FACTOR * 2, y + 16 * SCALE_FACTOR, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.RIGHT);
                     }
                 }
             } else {
@@ -163,7 +235,7 @@ public class SlimeSprite extends Sprite implements Collidable{
                         currentAnimation = ATTACK_UP;
                         currentAnimation.start();
                         lastAttack = System.currentTimeMillis();
-
+                        attack(new Rectangle(x + 16 * SCALE_FACTOR, y, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.UP);
                     }
                 } else {
                     if(!dontInterrupt.contains(currentAnimation) || !currentAnimation.isRunning()){
@@ -171,7 +243,7 @@ public class SlimeSprite extends Sprite implements Collidable{
                         currentAnimation = ATTACK_DOWN;
                         currentAnimation.start();
                         lastAttack = System.currentTimeMillis();
-
+                        attack(new Rectangle(x + 16 * SCALE_FACTOR, y + 16 * SCALE_FACTOR * 2, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.DOWN);
                     }
                 }
 
@@ -185,8 +257,6 @@ public class SlimeSprite extends Sprite implements Collidable{
             }
 
         }
-
-
 
     }
 
