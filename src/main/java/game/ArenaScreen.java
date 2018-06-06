@@ -66,6 +66,7 @@ public class ArenaScreen extends Screen {
             hudFont = fontBase.deriveFont(Font.PLAIN,20);
             //Set font for damage popup
             DamagePopup.setFont(fontBase.deriveFont(Font.PLAIN, 12));
+            DamagePopup.setCritFont(fontBase.deriveFont(Font.PLAIN, 20));
         } catch (Exception e){
             e.printStackTrace();
         }

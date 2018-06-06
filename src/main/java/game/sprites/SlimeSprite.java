@@ -122,7 +122,7 @@ public class SlimeSprite extends Sprite implements Collidable{
                 ((ArenaScreen) screen).addDamagePopup(
                         new DamagePopup(healthBefore - healthAfter,
                                 ps.getCenterX(),
-                                ps.getCenterY()));
+                                ps.getCenterY(), p.lastAttackWasCrit()));
                 SoundEffect.SLIME_HIT.play();
             } else {
                 SoundEffect.SLIME_MISS.play();

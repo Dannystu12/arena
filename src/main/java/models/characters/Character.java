@@ -10,6 +10,7 @@ public abstract class Character implements IAttack, Attackable {
     protected final int MAX_HP;
     private int armourClass;
     private int damageRoll;
+    private boolean lastAttackWasCrit;
 
     public Character(int hp, int armourClass, int damageRoll){
         this.hp = hp;
@@ -28,6 +29,10 @@ public abstract class Character implements IAttack, Attackable {
 
     public int getMAX_HP() {
         return MAX_HP;
+    }
+
+    public boolean lastAttackWasCrit(){
+        return lastAttackWasCrit;
     }
 
     @Override
@@ -60,6 +65,9 @@ public abstract class Character implements IAttack, Attackable {
         int damage = getDamage();
         if(hitRoll == 20){
             damage += getDamage();
+            lastAttackWasCrit = true;
+        } else {
+            lastAttackWasCrit = false;
         }
 
         attackable.takeDamage(damage);

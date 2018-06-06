@@ -15,16 +15,23 @@ public class DamagePopup {
     private int duration = 750;
     private boolean isComplete = false;
     private static Font font;
+    private static Font critFont;
+    private boolean isCrit;
 
-    public DamagePopup(int value, int x, int y){
+    public DamagePopup(int value, int x, int y, boolean isCrit){
         this.x = x;
         this.y = y;
         this.initTime = System.currentTimeMillis();
         this.value = value;
+        this.isCrit = isCrit;
     }
 
     public static void setFont(Font newFont){
         font = newFont;
+    }
+
+    public static void setCritFont(Font newFont){
+        critFont = newFont;
     }
 
 
@@ -40,13 +47,17 @@ public class DamagePopup {
     }
 
     public void onDraw(Graphics2D g2d) {
-        if(value <= 0){
+        g2d.setFont(font);
+
+        if(isCrit) {
+            g2d.setColor(Color.decode("#9d0da8"));
+            g2d.setFont(critFont);
+        }else if(value <= 0){
             g2d.setColor(Color.decode("#34438e"));
         } else {
             g2d.setColor(Color.decode("#8c1d04"));
         }
 
-        g2d.setFont(font);
         g2d.drawString(Integer.toString(value), x, y);
     }
 
