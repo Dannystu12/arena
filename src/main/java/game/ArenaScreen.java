@@ -16,6 +16,7 @@ import sun.audio.AudioStream;
 import sun.audio.ContinuousAudioDataStream;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import java.util.*;
@@ -38,6 +39,9 @@ public class ArenaScreen extends Screen {
     private static Font font;
     private static Font hudFont;
     private BufferedImage background;
+    private boolean paused;
+    private boolean spaceReleased;
+
 
     public ArenaScreen(ScreenFactory screenFactory) {
         super(screenFactory);
@@ -126,7 +130,20 @@ public class ArenaScreen extends Screen {
     @Override
     public void onUpdate() {
 
+        // Dont update if player is dead
         if(player.getPlayer().isDead()) return;
+
+        // Dont update if game is paused
+        if(getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_SPACE)
+                && spaceReleased){
+            spaceReleased = false;
+            paused = !paused;
+        } else if(getScreenFactory().getGame().getKeyboardListener().isKeyReleased(KeyEvent.VK_SPACE)){
+            spaceReleased = true;
+        }
+
+
+        if(paused) return;
 
         //Spawn enemies if appropriate
         if(enemies.isEmpty() || System.currentTimeMillis() - lastSpawn >= spawnDelay){
@@ -207,6 +224,12 @@ public class ArenaScreen extends Screen {
             drawCenteredString(g2d, "Game Over", new Rectangle(SCREEN_WIDTH, SCREEN_HEIGHT),
                     font);
         }
+
+        if(paused && player.getPlayer().isAlive()){
+            drawCenteredString(g2d, "Paused", new Rectangle(SCREEN_WIDTH, SCREEN_HEIGHT),
+                    font);
+        }
+
     }
 
     private void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
