@@ -19,6 +19,7 @@ public class SlimeSprite extends Sprite implements Collidable{
 
     private final int MOVE_AMOUNT = 1;
     private final String SPRITE_SHEET_PATH = "/sprites/enemies/slime/chara_slime.png";
+    private final String SMOKE_SHEET_PATH = "/sprites/effects/smoke.png";
     private Animator currentAnimation;
     private Random rng;
     private final int TIME_BETWEEN_ATTACKS = 1000;
@@ -28,7 +29,7 @@ public class SlimeSprite extends Sprite implements Collidable{
 
 
     private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
-        HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW;
+        HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW, DEATH;
 
     private ArrayList<Animator> dontInterrupt;
 
@@ -89,7 +90,9 @@ public class SlimeSprite extends Sprite implements Collidable{
             HIT_FROM_ABOVE = getAnimator(ss, 10, 4, 48, 48,100, false, false);
             HIT_FROM_BELOW = getAnimator(ss, 8, 4, 48, 48,100, false, false);
 
-
+            spritesheet = loader.loadImage(SMOKE_SHEET_PATH);
+            ss = new SpriteSheet(spritesheet);
+            DEATH = getAnimator(ss, 0, 4, 48, 48,80, false, false);
 
             //Create an array list in which certain animations cannot be interrupted
             dontInterrupt = new ArrayList<>();
@@ -101,6 +104,7 @@ public class SlimeSprite extends Sprite implements Collidable{
             dontInterrupt.add(HIT_FROM_RIGHT);
             dontInterrupt.add(HIT_FROM_ABOVE);
             dontInterrupt.add(HIT_FROM_BELOW);
+            dontInterrupt.add(DEATH);
 
             currentAnimation = IDLE;
         }catch (Exception e){
@@ -108,6 +112,9 @@ public class SlimeSprite extends Sprite implements Collidable{
         }
     }
 
+    public boolean isDead(){
+        return enemy.isDead() && currentAnimation == DEATH && !currentAnimation.isRunning();
+    }
 
 
     public void attack(Rectangle attackBox, Direction direction){
@@ -132,7 +139,16 @@ public class SlimeSprite extends Sprite implements Collidable{
     }
 
     public void takeHit(Direction d){
+
         currentAnimation.stop();
+
+        if(enemy.isDead()){
+            currentAnimation = DEATH;
+            currentAnimation.start();
+            return;
+        }
+
+
         switch(d){
             case UP:
                 currentAnimation = HIT_FROM_BELOW;

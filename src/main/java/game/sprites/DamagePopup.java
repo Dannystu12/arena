@@ -50,7 +50,7 @@ public class DamagePopup {
         g2d.setFont(font);
 
         if(isCrit) {
-            g2d.setColor(Color.decode("#9d0da8"));
+            g2d.setColor(Color.decode("#ffe226"));
             g2d.setFont(critFont);
         }else if(value <= 0){
             g2d.setColor(Color.decode("#34438e"));

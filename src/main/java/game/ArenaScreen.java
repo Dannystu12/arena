@@ -169,7 +169,7 @@ public class ArenaScreen extends Screen {
 
         for(int i = 0; i < enemies.size(); i++){
             SlimeSprite slime = enemies.get(i);
-            if(slime.getEnemy().isDead()){
+            if(slime.isDead()){
                 enemies.set(i, null);
                 killCount += 1;
             } else {
