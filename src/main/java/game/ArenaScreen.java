@@ -2,6 +2,7 @@ package game;
 
 import engine.Screen;
 import engine.ScreenFactory;
+import engine.sprite.BufferedImageLoader;
 import game.environments.Wall;
 import game.sprites.Collidable;
 import game.sprites.DamagePopup;
@@ -15,6 +16,7 @@ import java.awt.event.KeyEvent;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
@@ -31,9 +33,11 @@ public class ArenaScreen extends Screen {
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 580;
     private static Font font;
+    private BufferedImage background;
 
     public ArenaScreen(ScreenFactory screenFactory) {
         super(screenFactory);
+
         rng = new Random();
         player = new PlayerSprite(this, getSpawnX(), getSpawnY());
         damagePopups = new ArrayList<>();
@@ -45,8 +49,10 @@ public class ArenaScreen extends Screen {
         }
         addWalls();
 
-        //load in font
         try {
+            //Load background
+            background = new BufferedImageLoader().loadImage("/environments/Arena Map.png");
+            //Get font
             InputStream is = this.getClass().getResourceAsStream("/fonts/Minercraftory.ttf");
             Font fontBase = Font.createFont(Font.TRUETYPE_FONT, is);
             font = fontBase.deriveFont(Font.PLAIN,32);
@@ -72,14 +78,14 @@ public class ArenaScreen extends Screen {
     private void addWalls(){
         int w = 64;
         int h = SCREEN_HEIGHT;
-        addCollidable(new Wall(-w, 0, w, h));
-        addCollidable(new Wall(SCREEN_WIDTH, 0, w, h));
+        addCollidable(new Wall(-w + 32, 0, w, h));
+        addCollidable(new Wall(SCREEN_WIDTH - 32, 0, w, h));
 
         w = SCREEN_WIDTH;
         h = 64;
 
-        addCollidable(new Wall(0, -h, w, h));
-        addCollidable(new Wall(0, SCREEN_HEIGHT, w, h));
+        addCollidable(new Wall(0, -h + 16, w, h));
+        addCollidable(new Wall(0, SCREEN_HEIGHT - 36, w, h));
     }
 
     private void addCollidable(Collidable c){
@@ -147,6 +153,9 @@ public class ArenaScreen extends Screen {
 
     @Override
     public void onDraw(Graphics2D g2d) {
+        g2d.drawImage(background, 0,0,null);
+
+
         for(SlimeSprite slime : enemies){
             slime.onDraw(g2d);
         }
