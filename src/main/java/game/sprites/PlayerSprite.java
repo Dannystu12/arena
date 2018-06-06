@@ -21,6 +21,8 @@ public class PlayerSprite extends Sprite implements Collidable{
     private final int SCALE_FACTOR = 2;
     private Animator currentAnimation;
     private Player player;
+    private final int TIME_BETWEEN_ATTACKS = 750;
+    private long lastAttack;
 
     private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
             HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW;
@@ -30,6 +32,7 @@ public class PlayerSprite extends Sprite implements Collidable{
         super(screen,x, y);
         player = new Warrior();
         currentAnimation.start();
+        lastAttack = System.currentTimeMillis();
     }
 
     public Player getPlayer(){
@@ -142,7 +145,8 @@ public class PlayerSprite extends Sprite implements Collidable{
     public void onUpdate() {
     if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_UP)
                 && !dontInterrupt.contains(currentAnimation)){
-        if(currentAnimation != ATTACK_UP){
+        if(currentAnimation != ATTACK_UP && canAttack()){
+            lastAttack = System.currentTimeMillis();
             currentAnimation.stop();
             currentAnimation = ATTACK_UP;
             currentAnimation.start();
@@ -150,7 +154,8 @@ public class PlayerSprite extends Sprite implements Collidable{
         }
     } else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_DOWN)
                 && !dontInterrupt.contains(currentAnimation)){
-        if(currentAnimation != ATTACK_DOWN){
+        if(currentAnimation != ATTACK_DOWN && canAttack()){
+            lastAttack = System.currentTimeMillis();
             currentAnimation.stop();
             currentAnimation = ATTACK_DOWN;
             currentAnimation.start();
@@ -158,16 +163,16 @@ public class PlayerSprite extends Sprite implements Collidable{
         }
     }else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_LEFT)
                 && !dontInterrupt.contains(currentAnimation)) {
-        if (currentAnimation != ATTACK_LEFT) {
+        if (currentAnimation != ATTACK_LEFT && canAttack()) {
+            lastAttack = System.currentTimeMillis();
             currentAnimation.stop();
             currentAnimation = ATTACK_LEFT;
             currentAnimation.start();
             attack(new Rectangle(x, y + 16 * SCALE_FACTOR, 16 * SCALE_FACTOR, 16 * SCALE_FACTOR), Direction.LEFT);
         }
-    }else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_RIGHT))
-
-    {
-        if (currentAnimation != ATTACK_RIGHT) {
+    }else if(screen.getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_RIGHT)) {
+        if (currentAnimation != ATTACK_RIGHT && canAttack()) {
+            lastAttack = System.currentTimeMillis();
             currentAnimation.stop();
             currentAnimation = ATTACK_RIGHT;
             currentAnimation.start();
@@ -236,6 +241,10 @@ public class PlayerSprite extends Sprite implements Collidable{
             g2d.drawImage(currentAnimation.getSprite(), x, y,
                     currentAnimation.getSprite().getWidth() * SCALE_FACTOR,
                     currentAnimation.getSprite().getHeight()* SCALE_FACTOR, null);
+    }
+
+    private boolean canAttack(){
+        return System.currentTimeMillis() - lastAttack >= TIME_BETWEEN_ATTACKS;
     }
 
 }
