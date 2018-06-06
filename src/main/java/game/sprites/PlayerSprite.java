@@ -60,6 +60,7 @@ public class PlayerSprite extends Sprite implements Collidable{
 
     public void attack(Rectangle attackBox, Direction direction){
         boolean hasHit = false;
+        boolean hasKilled = false;
         for(SlimeSprite enemy : ((ArenaScreen) screen).getEnemies()){
             if(attackBox.intersects(enemy.getBounds())){
                 Enemy e = enemy.getEnemy();
@@ -73,10 +74,14 @@ public class PlayerSprite extends Sprite implements Collidable{
                                     enemy.getCenterX(),
                                     enemy.getCenterY(), e.lastAttackWasCrit()));
                     hasHit = true;
+                    if(e.isDead()) hasKilled =  true;
                 }
             }
         }
-        if(hasHit){
+
+        if(hasKilled){
+            SoundEffect.PUFF_OF_SMOKE.play();
+        } else if(hasHit){
             SoundEffect.HERO_HIT.play();
         } else {
             SoundEffect.HERO_MISS.play();

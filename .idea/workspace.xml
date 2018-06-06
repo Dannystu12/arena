@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee850446-1034-40d8-90c7-360b2c66b607" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" afterPath="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java" afterPath="$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/sounds/puff_of_smoke.wav" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/game/ArenaScreen.class" afterPath="$PROJECT_DIR$/out/production/classes/game/ArenaScreen.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/game/sounds/SoundEffect.class" afterPath="$PROJECT_DIR$/out/production/classes/game/sounds/SoundEffect.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/game/sprites/PlayerSprite$1.class" afterPath="$PROJECT_DIR$/out/production/classes/game/sprites/PlayerSprite$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/game/sprites/PlayerSprite.class" afterPath="$PROJECT_DIR$/out/production/classes/game/sprites/PlayerSprite.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/game/sprites/SlimeSprite.class" afterPath="$PROJECT_DIR$/out/production/classes/game/sprites/SlimeSprite.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java" afterPath="$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/sprites/PlayerSprite.java" afterPath="$PROJECT_DIR$/src/main/java/game/sprites/PlayerSprite.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java" afterPath="$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/characters/Character.java" afterPath="$PROJECT_DIR$/src/main/java/models/characters/Character.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/music/bgm.wav" afterPath="$PROJECT_DIR$/src/main/resources/music/bgm.wav" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -34,8 +40,8 @@
       <file leaf-file-name="PlayerSprite.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/PlayerSprite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="67" column="44" lean-forward="true" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+            <state relative-caret-position="236">
+              <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1294#1295#0" expanded="true" />
@@ -44,8 +50,8 @@
                 <element signature="e#1778#1779#0" expanded="true" />
                 <element signature="e#1808#1809#0" expanded="true" />
                 <element signature="e#1894#1895#0" expanded="true" />
-                <element signature="e#10241#10242#0" expanded="true" />
-                <element signature="e#10327#10328#0" expanded="true" />
+                <element signature="e#10407#10408#0" expanded="true" />
+                <element signature="e#10493#10494#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,12 +60,12 @@
       <file leaf-file-name="SoundEffect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            <state relative-caret-position="270">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1462#1463#0" expanded="true" />
-                <element signature="e#1486#1487#0" expanded="true" />
+                <element signature="e#1219#1220#0" expanded="true" />
+                <element signature="e#1243#1244#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +74,7 @@
       <file leaf-file-name="Sprite.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/Sprite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="540">
               <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -86,8 +92,8 @@
       <file leaf-file-name="SlimeSprite.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="124" column="70" lean-forward="false" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="70" />
+            <state relative-caret-position="307">
+              <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1338#1339#0" expanded="true" />
@@ -96,20 +102,20 @@
                 <element signature="e#1539#1540#0" expanded="true" />
                 <element signature="e#1569#1570#0" expanded="true" />
                 <element signature="e#1597#1598#0" expanded="true" />
-                <element signature="e#10674#10675#0" expanded="true" />
-                <element signature="e#10700#10701#0" expanded="true" />
-                <element signature="e#10731#10732#0" expanded="true" />
-                <element signature="e#10757#10758#0" expanded="true" />
+                <element signature="e#10675#10676#0" expanded="true" />
+                <element signature="e#10701#10702#0" expanded="true" />
+                <element signature="e#10732#10733#0" expanded="true" />
+                <element signature="e#10758#10759#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DamagePopup.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DamagePopup.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#758#759#0" expanded="true" />
                 <element signature="e#792#793#0" expanded="true" />
@@ -121,11 +127,10 @@
       <file leaf-file-name="ArenaScreen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/ArenaScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+            <state relative-caret-position="1185">
+              <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2571#2572#0" expanded="true" />
                 <element signature="e#2607#2608#0" expanded="true" />
                 <element signature="e#2637#2638#0" expanded="true" />
                 <element signature="e#2697#2698#0" expanded="true" />
@@ -157,12 +162,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="270">
+              <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -680,17 +687,18 @@
         <option value="$PROJECT_DIR$/src/main/java/game/sprites/Popup.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/sounds/SoundEffects.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Runner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/characters/Character.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/sprites/PlayerSprite.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" />
-        <option value="$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="25" />
+    <option name="x" value="82" />
+    <option name="y" value="24" />
     <option name="width" value="1440" />
     <option name="height" value="818" />
   </component>
@@ -899,19 +907,20 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/danielstewart/codeclan_work/week_09/project/Arena/src/main/java/game/sprites/PlayerSprite.java" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/music" />
-      <recent name="$PROJECT_DIR$/src/main/resources/environments" />
-      <recent name="$PROJECT_DIR$/src/main/resources/fonts" />
-      <recent name="$PROJECT_DIR$/src/main/resources/sprites/hero" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/music" />
       <recent name="$PROJECT_DIR$/src/main/resources/sounds" />
       <recent name="$PROJECT_DIR$/src/main/resources/sprites" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/sounds" />
+      <recent name="$PROJECT_DIR$/src/main/resources/music" />
+      <recent name="$PROJECT_DIR$/src/main/resources/environments" />
+      <recent name="$PROJECT_DIR$/src/main/resources/fonts" />
+      <recent name="$PROJECT_DIR$/src/main/resources/sprites/hero" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -926,7 +935,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Arena">
+  <component name="RunManager" selected="Application.Runner">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -1132,8 +1141,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Arena" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Runner" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Runner" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Arena" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.All in Arena_test" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.helpers in Arena_test" />
         <item index="4" class="java.lang.String" itemvalue="Application.MovingSprite" />
@@ -1189,7 +1198,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1440" height="818" extended-state="0" />
+    <frame x="82" y="24" width="1440" height="818" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1597,30 +1606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/Sprite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#583#584#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#631#632#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#693#694#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre/lib/rt.jar!/sun/audio/AudioStream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -1636,18 +1621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1462#1463#0" expanded="true" />
-            <element signature="e#1486#1487#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/characters/Character.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -1659,10 +1632,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding>
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/Sprite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#693#694#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="124" column="70" lean-forward="false" selection-start-line="124" selection-start-column="49" selection-end-line="124" selection-end-column="70" />
+        <state relative-caret-position="307">
+          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1338#1339#0" expanded="true" />
@@ -1671,18 +1683,18 @@
             <element signature="e#1539#1540#0" expanded="true" />
             <element signature="e#1569#1570#0" expanded="true" />
             <element signature="e#1597#1598#0" expanded="true" />
-            <element signature="e#10674#10675#0" expanded="true" />
-            <element signature="e#10700#10701#0" expanded="true" />
-            <element signature="e#10731#10732#0" expanded="true" />
-            <element signature="e#10757#10758#0" expanded="true" />
+            <element signature="e#10675#10676#0" expanded="true" />
+            <element signature="e#10701#10702#0" expanded="true" />
+            <element signature="e#10732#10733#0" expanded="true" />
+            <element signature="e#10758#10759#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/PlayerSprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="67" column="44" lean-forward="true" selection-start-line="67" selection-start-column="44" selection-end-line="67" selection-end-column="44" />
+        <state relative-caret-position="236">
+          <caret line="77" column="17" lean-forward="true" selection-start-line="77" selection-start-column="17" selection-end-line="77" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1294#1295#0" expanded="true" />
@@ -1691,19 +1703,18 @@
             <element signature="e#1778#1779#0" expanded="true" />
             <element signature="e#1808#1809#0" expanded="true" />
             <element signature="e#1894#1895#0" expanded="true" />
-            <element signature="e#10241#10242#0" expanded="true" />
-            <element signature="e#10327#10328#0" expanded="true" />
+            <element signature="e#10407#10408#0" expanded="true" />
+            <element signature="e#10493#10494#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/ArenaScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        <state relative-caret-position="1185">
+          <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2571#2572#0" expanded="true" />
             <element signature="e#2607#2608#0" expanded="true" />
             <element signature="e#2637#2638#0" expanded="true" />
             <element signature="e#2697#2698#0" expanded="true" />
@@ -1721,13 +1732,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="59" column="0" lean-forward="true" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="270">
+          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
           <folding>
-            <element signature="e#758#759#0" expanded="true" />
-            <element signature="e#792#793#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

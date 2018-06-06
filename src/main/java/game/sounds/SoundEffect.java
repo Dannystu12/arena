@@ -11,7 +11,8 @@ public enum SoundEffect {
     HERO_HIT("/sounds/hero_hit.wav"),
     HERO_MISS("/sounds/hero_miss.wav"),
     SLIME_HIT("/sounds/slime_hit.wav"),
-    SLIME_MISS("/sounds/slime_miss.wav");
+    SLIME_MISS("/sounds/slime_miss.wav"),
+    PUFF_OF_SMOKE("/sounds/puff_of_smoke.wav");
 
 
     // Each sound effect has its own clip, loaded with its own sound file.
@@ -34,10 +35,6 @@ public enum SoundEffect {
             if (clip.isRunning())
                 clip.stop();
             clip.setFramePosition(0);
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float range = gainControl.getMaximum() - gainControl.getMinimum();
-            float gain = (range * VOLUME) + gainControl.getMinimum();
-            gainControl.setValue(gain);
             clip.start();
     }
 

@@ -150,6 +150,7 @@ public class SlimeSprite extends Sprite implements Collidable{
 
         currentAnimation.start();
 
+
     }
 
 
