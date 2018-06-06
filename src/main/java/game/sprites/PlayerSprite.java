@@ -227,11 +227,12 @@ public class PlayerSprite extends Sprite implements Collidable{
                 currentAnimation.start();
             }
         }
+        currentAnimation.update(System.currentTimeMillis());
+
     }
 
     @Override
     public void onDraw(Graphics2D g2d) {
-        currentAnimation.update(System.currentTimeMillis());
             g2d.drawImage(currentAnimation.getSprite(), x, y,
                     currentAnimation.getSprite().getWidth() * SCALE_FACTOR,
                     currentAnimation.getSprite().getHeight()* SCALE_FACTOR, null);

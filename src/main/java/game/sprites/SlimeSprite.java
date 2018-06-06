@@ -155,8 +155,8 @@ public class SlimeSprite extends Sprite implements Collidable{
         int dy = player.getY() - y;
 
         //Check if need to move closer
-        if(Math.abs(dx) > this.currentAnimation.getSprite().getWidth() ||
-                Math.abs(dy) > this.currentAnimation.getSprite().getHeight()){
+        if(Math.abs(dx) >= currentAnimation.getSprite().getWidth() / 3 * SCALE_FACTOR + 5||
+                Math.abs(dy) >= currentAnimation.getSprite().getWidth() / 3 * SCALE_FACTOR + 5){
             if(Math.abs(dx) >= Math.abs(dy)){
                 if(dx < 0){
                     if(currentAnimation != WALK_LEFT && !dontInterrupt.contains(currentAnimation) || !currentAnimation.isRunning()){
@@ -254,11 +254,12 @@ public class SlimeSprite extends Sprite implements Collidable{
 
         }
 
+        currentAnimation.update(System.currentTimeMillis());
+
     }
 
     @Override
     public void onDraw(Graphics2D g2d) {
-        currentAnimation.update(System.currentTimeMillis());
         g2d.drawImage(currentAnimation.getSprite(), x, y,
                 currentAnimation.getSprite().getWidth() * SCALE_FACTOR,
                 currentAnimation.getSprite().getHeight()* SCALE_FACTOR, null);

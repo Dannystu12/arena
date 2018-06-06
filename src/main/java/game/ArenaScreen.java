@@ -15,6 +15,8 @@ import java.awt.event.KeyEvent;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 public class ArenaScreen extends Screen {
@@ -27,8 +29,8 @@ public class ArenaScreen extends Screen {
     private Random rng;
     private int enemyCount = 2;
     private final int SCREEN_WIDTH = 800;
-    private final int SCREEN_HEIGHT = 600;
-    private static final Font font = new Font("Helvetica", Font.BOLD, 12);
+    private final int SCREEN_HEIGHT = 580;
+    private static Font font;
 
     public ArenaScreen(ScreenFactory screenFactory) {
         super(screenFactory);
@@ -42,6 +44,17 @@ public class ArenaScreen extends Screen {
             addEnemy(new SlimeSprite(this, getSpawnX(), getSpawnY()));
         }
         addWalls();
+
+        //load in font
+        try {
+            InputStream is = this.getClass().getResourceAsStream("/fonts/Minercraftory.ttf");
+            Font fontBase = Font.createFont(Font.TRUETYPE_FONT, is);
+            font = fontBase.deriveFont(Font.PLAIN,32);
+            //Set font for damage popup
+            DamagePopup.setFont(fontBase.deriveFont(Font.PLAIN, 12));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void addDamagePopup(DamagePopup dp){
@@ -66,7 +79,7 @@ public class ArenaScreen extends Screen {
         h = 64;
 
         addCollidable(new Wall(0, -h, w, h));
-        addCollidable(new Wall(0, SCREEN_HEIGHT - 20, w, h));
+        addCollidable(new Wall(0, SCREEN_HEIGHT, w, h));
     }
 
     private void addCollidable(Collidable c){

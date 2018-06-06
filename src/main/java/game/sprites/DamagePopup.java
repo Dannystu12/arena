@@ -14,13 +14,17 @@ public class DamagePopup {
     private long initTime;
     private int duration = 750;
     private boolean isComplete = false;
-    private static final Font font = new Font("Helvetica", Font.BOLD, 12);
+    private static Font font;
 
     public DamagePopup(int value, int x, int y){
         this.x = x;
         this.y = y;
         this.initTime = System.currentTimeMillis();
         this.value = value;
+    }
+
+    public static void setFont(Font newFont){
+        font = newFont;
     }
 
 
