@@ -9,6 +9,7 @@ import game.sprites.Collidable;
 import game.sprites.DamagePopup;
 import game.sprites.PlayerSprite;
 import game.sprites.SlimeSprite;
+import models.characters.enemies.Enemy;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -27,9 +28,12 @@ public class ArenaScreen extends Screen {
     private ArrayList<Collidable> collidables;
     private ArrayList<DamagePopup> damagePopups;
     private Random rng;
-    private int enemyCount = 2;
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 580;
+    private long lastSpawn;
+    private int spawnDelay = 5000;
+    private final int SPAWN_REDUCTION = 100;
+    private final int SPAWN_MIN = 250;
     private static Font font;
     private BufferedImage background;
 
@@ -42,9 +46,8 @@ public class ArenaScreen extends Screen {
         enemies = new ArrayList<>();
         collidables = new ArrayList<>();
         collidables.add(player);
-        for(int i = 0; i < enemyCount; i++){
-            addEnemy(new SlimeSprite(this, getSpawnX(), getSpawnY()));
-        }
+        lastSpawn = System.currentTimeMillis();
+
         addWalls();
 
         try {
@@ -71,11 +74,11 @@ public class ArenaScreen extends Screen {
     }
 
     private int getSpawnX(){
-        return 100 + rng.nextInt(SCREEN_WIDTH - 200);
+        return 50 + rng.nextInt(SCREEN_WIDTH - 100);
     }
 
     private int getSpawnY(){
-        return 100 + rng.nextInt(SCREEN_HEIGHT - 200);
+        return 50 + rng.nextInt(SCREEN_HEIGHT - 100);
     }
 
     private void addWalls(){
@@ -119,7 +122,22 @@ public class ArenaScreen extends Screen {
 
     @Override
     public void onUpdate() {
+
         if(player.getPlayer().isDead()) return;
+
+        //Spawn enemies if appropriate
+        if(enemies.isEmpty() || System.currentTimeMillis() - lastSpawn >= spawnDelay){
+            SlimeSprite enemy = new SlimeSprite(this, getSpawnX(), getSpawnY());
+            addEnemy(enemy);
+            while(enemy.checkCollisions()){
+                enemy.setX(getSpawnX());
+                enemy.setY(getSpawnY());
+            }
+
+
+            lastSpawn = System.currentTimeMillis();
+            reduceSpawnDelay();
+        }
 
         for(int i = 0; i < damagePopups.size(); i++){
             DamagePopup d = damagePopups.get(i);
@@ -160,8 +178,10 @@ public class ArenaScreen extends Screen {
 
 
         for(int i = 0; i < enemies.size(); i++){
-            enemies.get(i).onDraw(g2d);
+            SlimeSprite enemy =  enemies.get(i);
+            if(enemy != null) enemy.onDraw(g2d);
         }
+
         player.onDraw(g2d);
 
         for(int i = 0; i < damagePopups.size(); i++){
@@ -203,6 +223,11 @@ public class ArenaScreen extends Screen {
             e.printStackTrace();
         }
 
+    }
+
+    private void reduceSpawnDelay(){
+        spawnDelay -= SPAWN_REDUCTION;
+        spawnDelay = Math.max(spawnDelay, SPAWN_MIN);
     }
 
 }
