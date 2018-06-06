@@ -77,11 +77,11 @@ public class ArenaScreen extends Screen {
     }
 
     private int getSpawnX(){
-        return 50 + rng.nextInt(SCREEN_WIDTH - 100);
+        return 100 + rng.nextInt(SCREEN_WIDTH - 200);
     }
 
     private int getSpawnY(){
-        return 50 + rng.nextInt(SCREEN_HEIGHT - 100);
+        return 100 + rng.nextInt(SCREEN_HEIGHT - 200);
     }
 
     private void addWalls(){
@@ -199,7 +199,9 @@ public class ArenaScreen extends Screen {
         //cleanup null references in popups
         damagePopups.removeIf(Objects::isNull);
 
+        drawHealth(g2d);
         drawKillCount(g2d);
+
 
         if(player.getPlayer().isDead()){
             drawCenteredString(g2d, "Game Over", new Rectangle(SCREEN_WIDTH, SCREEN_HEIGHT),
@@ -218,10 +220,18 @@ public class ArenaScreen extends Screen {
     private void drawKillCount(Graphics g){
         String text = String.format("Kills % 3d", killCount);
         FontMetrics metrics = g.getFontMetrics(hudFont);
-
         g.setFont(hudFont);
         g.setColor(Color.decode("#8c1d04"));
         g.drawString(text, SCREEN_WIDTH - metrics.stringWidth(text) - 16, 24);
+    }
+
+    private void drawHealth(Graphics g){
+        double healthPct = player.getPlayer().getHp() / ((double) player.getPlayer().getMAX_HP()) * 100;
+        String text = String.format("Health % 3.0f", healthPct);
+        FontMetrics metrics = g.getFontMetrics(hudFont);
+        g.setFont(hudFont);
+        g.setColor(Color.decode("#8c1d04"));
+        g.drawString(text, 16, 24);
     }
 
     private void startBackgroundMusic(String path){
