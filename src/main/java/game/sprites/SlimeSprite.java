@@ -5,6 +5,7 @@ import engine.sprite.Animator;
 import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
+import game.sounds.SoundEffect;
 import models.characters.enemies.Enemy;
 import models.characters.enemies.Slime;
 import models.characters.players.Player;
@@ -122,6 +123,9 @@ public class SlimeSprite extends Sprite implements Collidable{
                         new DamagePopup(healthBefore - healthAfter,
                                 ps.getCenterX(),
                                 ps.getCenterY()));
+                SoundEffect.SLIME_HIT.play();
+            } else {
+                SoundEffect.SLIME_MISS.play();
             }
 
         }

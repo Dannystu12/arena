@@ -4,6 +4,7 @@ import engine.Screen;
 import engine.ScreenFactory;
 import engine.sprite.BufferedImageLoader;
 import game.environments.Wall;
+import game.sounds.SoundEffect;
 import game.sprites.Collidable;
 import game.sprites.DamagePopup;
 import game.sprites.PlayerSprite;
@@ -61,6 +62,9 @@ public class ArenaScreen extends Screen {
         } catch (Exception e){
             e.printStackTrace();
         }
+
+        //Load sound effects
+        SoundEffect.init();
     }
 
     public void addDamagePopup(DamagePopup dp){

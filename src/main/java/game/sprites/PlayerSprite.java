@@ -5,6 +5,7 @@ import engine.sprite.Animator;
 import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
+import game.sounds.SoundEffect;
 import models.characters.enemies.Enemy;
 import models.characters.players.Player;
 import models.characters.players.Warrior;
@@ -58,6 +59,7 @@ public class PlayerSprite extends Sprite implements Collidable{
     }
 
     public void attack(Rectangle attackBox, Direction direction){
+        boolean hasHit = false;
         for(SlimeSprite enemy : ((ArenaScreen) screen).getEnemies()){
             if(attackBox.intersects(enemy.getBounds())){
                 Enemy e = enemy.getEnemy();
@@ -70,8 +72,14 @@ public class PlayerSprite extends Sprite implements Collidable{
                             new DamagePopup(healthBefore - healthAfter,
                                     enemy.getCenterX(),
                                     enemy.getCenterY()));
+                    hasHit = true;
                 }
             }
+        }
+        if(hasHit){
+            SoundEffect.HERO_HIT.play();
+        } else {
+            SoundEffect.HERO_MISS.play();
         }
     }
 
