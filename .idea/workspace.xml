@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee850446-1034-40d8-90c7-360b2c66b607" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" afterPath="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java" afterPath="$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -81,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SlimeSprite.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SlimeSprite.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
+            <state relative-caret-position="230">
               <caret line="272" column="29" lean-forward="true" selection-start-line="272" selection-start-column="29" selection-end-line="272" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -102,27 +100,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ArenaScreen.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DamagePopup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="45" column="50" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArenaScreen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/game/ArenaScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="133" column="23" lean-forward="true" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
+            <state relative-caret-position="170">
+              <caret line="218" column="45" lean-forward="false" selection-start-line="218" selection-start-column="45" selection-end-line="218" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2283#2284#0" expanded="true" />
-                <element signature="e#2319#2320#0" expanded="true" />
-                <element signature="e#2349#2350#0" expanded="true" />
-                <element signature="e#2408#2409#0" expanded="true" />
-                <element signature="e#2438#2439#0" expanded="true" />
-                <element signature="e#2498#2499#0" expanded="true" />
-                <element signature="e#2901#2902#0" expanded="true" />
-                <element signature="e#2935#2936#0" expanded="true" />
-                <element signature="e#3117#3118#0" expanded="true" />
-                <element signature="e#3147#3148#0" expanded="true" />
-                <element signature="e#3186#3187#0" expanded="true" />
-                <element signature="e#3215#3216#0" expanded="true" />
-                <element signature="e#3267#3268#0" expanded="true" />
-                <element signature="e#3301#3302#0" expanded="true" />
+                <element signature="e#2401#2402#0" expanded="true" />
+                <element signature="e#2437#2438#0" expanded="true" />
+                <element signature="e#2467#2468#0" expanded="true" />
+                <element signature="e#2526#2527#0" expanded="true" />
+                <element signature="e#2556#2557#0" expanded="true" />
+                <element signature="e#2616#2617#0" expanded="true" />
+                <element signature="e#3019#3020#0" expanded="true" />
+                <element signature="e#3053#3054#0" expanded="true" />
+                <element signature="e#3235#3236#0" expanded="true" />
+                <element signature="e#3265#3266#0" expanded="true" />
+                <element signature="e#3304#3305#0" expanded="true" />
+                <element signature="e#3333#3334#0" expanded="true" />
+                <element signature="e#3385#3386#0" expanded="true" />
+                <element signature="e#3419#3420#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -665,8 +673,8 @@
         <option value="$PROJECT_DIR$/src/main/java/game/sprites/PlayerSprite.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Runner.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/sounds/SoundEffect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" />
         <option value="$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java" />
+        <option value="$PROJECT_DIR$/src/main/java/game/ArenaScreen.java" />
       </list>
     </option>
   </component>
@@ -1585,20 +1593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#569#570#0" expanded="false" />
-            <element signature="e#599#600#0" expanded="false" />
-            <element signature="e#800#801#0" expanded="false" />
-            <element signature="e#833#834#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/sprite/SpriteSheet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1684,33 +1678,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/game/ArenaScreen.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/DamagePopup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="133" column="23" lean-forward="true" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2283#2284#0" expanded="true" />
-            <element signature="e#2319#2320#0" expanded="true" />
-            <element signature="e#2349#2350#0" expanded="true" />
-            <element signature="e#2408#2409#0" expanded="true" />
-            <element signature="e#2438#2439#0" expanded="true" />
-            <element signature="e#2498#2499#0" expanded="true" />
-            <element signature="e#2901#2902#0" expanded="true" />
-            <element signature="e#2935#2936#0" expanded="true" />
-            <element signature="e#3117#3118#0" expanded="true" />
-            <element signature="e#3147#3148#0" expanded="true" />
-            <element signature="e#3186#3187#0" expanded="true" />
-            <element signature="e#3215#3216#0" expanded="true" />
-            <element signature="e#3267#3268#0" expanded="true" />
-            <element signature="e#3301#3302#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="215">
+          <caret line="45" column="50" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/game/sprites/SlimeSprite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="230">
           <caret line="272" column="29" lean-forward="true" selection-start-line="272" selection-start-column="29" selection-end-line="272" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1723,6 +1701,30 @@
             <element signature="e#10677#10678#0" expanded="true" />
             <element signature="e#10708#10709#0" expanded="true" />
             <element signature="e#10734#10735#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/game/ArenaScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="218" column="45" lean-forward="false" selection-start-line="218" selection-start-column="45" selection-end-line="218" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2401#2402#0" expanded="true" />
+            <element signature="e#2437#2438#0" expanded="true" />
+            <element signature="e#2467#2468#0" expanded="true" />
+            <element signature="e#2526#2527#0" expanded="true" />
+            <element signature="e#2556#2557#0" expanded="true" />
+            <element signature="e#2616#2617#0" expanded="true" />
+            <element signature="e#3019#3020#0" expanded="true" />
+            <element signature="e#3053#3054#0" expanded="true" />
+            <element signature="e#3235#3236#0" expanded="true" />
+            <element signature="e#3265#3266#0" expanded="true" />
+            <element signature="e#3304#3305#0" expanded="true" />
+            <element signature="e#3333#3334#0" expanded="true" />
+            <element signature="e#3385#3386#0" expanded="true" />
+            <element signature="e#3419#3420#0" expanded="true" />
           </folding>
         </state>
       </provider>

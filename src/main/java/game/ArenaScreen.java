@@ -34,7 +34,9 @@ public class ArenaScreen extends Screen {
     private int spawnDelay = 5000;
     private final int SPAWN_REDUCTION = 100;
     private final int SPAWN_MIN = 250;
+    private int killCount;
     private static Font font;
+    private static Font hudFont;
     private BufferedImage background;
 
     public ArenaScreen(ScreenFactory screenFactory) {
@@ -57,6 +59,7 @@ public class ArenaScreen extends Screen {
             InputStream is = this.getClass().getResourceAsStream("/fonts/Minercraftory.ttf");
             Font fontBase = Font.createFont(Font.TRUETYPE_FONT, is);
             font = fontBase.deriveFont(Font.PLAIN,32);
+            hudFont = fontBase.deriveFont(Font.PLAIN,20);
             //Set font for damage popup
             DamagePopup.setFont(fontBase.deriveFont(Font.PLAIN, 12));
         } catch (Exception e){
@@ -134,7 +137,6 @@ public class ArenaScreen extends Screen {
                 enemy.setY(getSpawnY());
             }
 
-
             lastSpawn = System.currentTimeMillis();
             reduceSpawnDelay();
         }
@@ -151,6 +153,7 @@ public class ArenaScreen extends Screen {
             SlimeSprite slime = enemies.get(i);
             if(slime.getEnemy().isDead()){
                 enemies.set(i, null);
+                killCount += 1;
             } else {
                 slime.onUpdate(player);
             }
@@ -196,6 +199,7 @@ public class ArenaScreen extends Screen {
         //cleanup null references in popups
         damagePopups.removeIf(Objects::isNull);
 
+        drawKillCount(g2d);
 
         if(player.getPlayer().isDead()){
             drawCenteredString(g2d, "Game Over", new Rectangle(SCREEN_WIDTH, SCREEN_HEIGHT),
@@ -209,6 +213,15 @@ public class ArenaScreen extends Screen {
         int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
         g.setFont(font);
         g.drawString(text, x, y);
+    }
+
+    private void drawKillCount(Graphics g){
+        String text = String.format("Kills % 3d", killCount);
+        FontMetrics metrics = g.getFontMetrics(hudFont);
+
+        g.setFont(hudFont);
+        g.setColor(Color.decode("#8c1d04"));
+        g.drawString(text, SCREEN_WIDTH - metrics.stringWidth(text) - 16, 24);
     }
 
     private void startBackgroundMusic(String path){
