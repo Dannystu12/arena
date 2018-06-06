@@ -3,6 +3,7 @@ package game.sounds;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
 public enum SoundEffect {
@@ -15,6 +16,7 @@ public enum SoundEffect {
 
     // Each sound effect has its own clip, loaded with its own sound file.
     private Clip clip;
+    private final float VOLUME = 1f;
 
     // Constructor to construct each element of the enum with its own sound file.
     SoundEffect(String soundFileName) {
@@ -32,6 +34,10 @@ public enum SoundEffect {
             if (clip.isRunning())
                 clip.stop();
             clip.setFramePosition(0);
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            float range = gainControl.getMaximum() - gainControl.getMinimum();
+            float gain = (range * VOLUME) + gainControl.getMinimum();
+            gainControl.setValue(gain);
             clip.start();
     }
 

@@ -9,16 +9,13 @@ import game.sprites.Collidable;
 import game.sprites.DamagePopup;
 import game.sprites.PlayerSprite;
 import game.sprites.SlimeSprite;
-import models.characters.enemies.Slime;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.font.FontRenderContext;
-import java.awt.font.TextLayout;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
@@ -65,6 +62,8 @@ public class ArenaScreen extends Screen {
 
         //Load sound effects
         SoundEffect.init();
+
+        startBackgroundMusic("/music/bgm.wav");
     }
 
     public void addDamagePopup(DamagePopup dp){
@@ -160,8 +159,8 @@ public class ArenaScreen extends Screen {
         g2d.drawImage(background, 0,0,null);
 
 
-        for(SlimeSprite slime : enemies){
-            slime.onDraw(g2d);
+        for(int i = 0; i < enemies.size(); i++){
+            enemies.get(i).onDraw(g2d);
         }
         player.onDraw(g2d);
 
@@ -184,12 +183,26 @@ public class ArenaScreen extends Screen {
         }
     }
 
-    public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
+    private void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
         FontMetrics metrics = g.getFontMetrics(font);
         int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
         int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
         g.setFont(font);
         g.drawString(text, x, y);
+    }
+
+    private void startBackgroundMusic(String path){
+        ContinuousAudioDataStream loop;
+        try {
+            AudioStream s = new AudioStream(getClass().getResourceAsStream(path));
+            AudioData audiodata = s.getData();
+            loop = new ContinuousAudioDataStream(audiodata);
+            AudioPlayer.player.start(loop);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
