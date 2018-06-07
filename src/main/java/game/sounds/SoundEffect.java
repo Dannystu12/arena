@@ -3,15 +3,23 @@ package game.sounds;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
 public enum SoundEffect {
 
-    HERO_HIT("/sounds/hero_hit.wav"),
+    SLIME_HIT("/sounds/slime_hit.wav"),
     HERO_MISS("/sounds/hero_miss.wav"),
     ENEMY_HIT_PLAYER("/sounds/enemy_hit_player.wav"),
     SLIME_MISS("/sounds/slime_miss.wav"),
+    BAT_HIT("/sounds/bat_hit.wav"),
+    GOBLIN_HIT("/sounds/goblin_hit.wav"),
+    ORC_HIT("/sounds/orc_hit.wav"),
+    RAT_HIT("/sounds/rat_hit.wav"),
+    GOBLIN_MISS("/sounds/goblin_miss.wav"),
+    TROLL_MISS("/sounds/troll_miss.wav"),
+    ORC_MISS("/sounds/orc_miss.wav"),
+    SPIDER_HIT("/sounds/spider_hit.wav"),
+    TROLL_HIT("/sounds/troll_hit.wav"),
     PUFF_OF_SMOKE("/sounds/puff_of_smoke.wav"),
     TAKE_POTION("/sounds/potion.wav"),
     LAUGH("/sounds/announcer/laugh.wav"),

@@ -15,7 +15,7 @@ import java.awt.*;
 public class TrollSprite extends EnemySprite{
 
     public TrollSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Troll(), "/sprites/enemies/chara_troll.png");
+        super(screen, x, y, new Troll(), "/sprites/enemies/chara_troll.png", SoundEffect.TROLL_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){
@@ -33,7 +33,7 @@ public class TrollSprite extends EnemySprite{
                                 ps.getCenterY(), p.lastAttackWasCrit()));
                 SoundEffect.ENEMY_HIT_PLAYER.play();
             } else {
-                SoundEffect.SLIME_MISS.play();
+                SoundEffect.TROLL_MISS.play();
             }
 
         }

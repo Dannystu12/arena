@@ -15,7 +15,7 @@ import java.awt.*;
 public class RatSprite extends EnemySprite{
 
     public RatSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Rat(), "/sprites/enemies/chara_rat.png");
+        super(screen, x, y, new Rat(), "/sprites/enemies/chara_rat.png",SoundEffect.RAT_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){

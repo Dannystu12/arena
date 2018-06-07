@@ -12,7 +12,7 @@ import java.awt.*;
 public class SlimeSprite extends EnemySprite {
 
     public SlimeSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Slime(), "/sprites/enemies/chara_slime.png");
+        super(screen, x, y, new Slime(), "/sprites/enemies/chara_slime.png", SoundEffect.SLIME_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){

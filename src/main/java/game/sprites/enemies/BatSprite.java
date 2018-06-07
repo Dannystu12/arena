@@ -15,7 +15,7 @@ import java.awt.*;
 public class BatSprite extends EnemySprite{
 
     public BatSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Bat(), "/sprites/enemies/chara_bat.png");
+        super(screen, x, y, new Bat(), "/sprites/enemies/chara_bat.png", SoundEffect.BAT_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){

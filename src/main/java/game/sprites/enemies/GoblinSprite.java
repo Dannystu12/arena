@@ -13,7 +13,7 @@ import java.awt.*;
 public class GoblinSprite extends EnemySprite{
 
     public GoblinSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Goblin(), "/sprites/enemies/chara_goblin.png");
+        super(screen, x, y, new Goblin(), "/sprites/enemies/chara_goblin.png", SoundEffect.GOBLIN_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){
@@ -31,7 +31,7 @@ public class GoblinSprite extends EnemySprite{
                                 ps.getCenterY(), p.lastAttackWasCrit()));
                 SoundEffect.ENEMY_HIT_PLAYER.play();
             } else {
-                SoundEffect.SLIME_MISS.play();
+                SoundEffect.GOBLIN_MISS.play();
             }
 
         }

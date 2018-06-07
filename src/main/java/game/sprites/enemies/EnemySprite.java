@@ -28,6 +28,7 @@ public abstract class EnemySprite extends Sprite implements Collidable{
     protected long lastAttack;
     protected final int SCALE_FACTOR = 2;
     protected Enemy enemy;
+    protected SoundEffect hitSound;
 
 
     protected Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
@@ -35,10 +36,10 @@ public abstract class EnemySprite extends Sprite implements Collidable{
 
     protected ArrayList<Animator> dontInterrupt;
 
-    public EnemySprite(Screen screen, int x, int y, Enemy enemy, String spriteSheetPath){
+    public EnemySprite(Screen screen, int x, int y, Enemy enemy, String spriteSheetPath, SoundEffect hitSound){
         super(screen, x, y);
         SPRITE_SHEET_PATH = spriteSheetPath;
-
+        this.hitSound = hitSound;
         rng = new Random();
         lastAttack = System.currentTimeMillis();
         this.enemy = enemy;
@@ -46,6 +47,10 @@ public abstract class EnemySprite extends Sprite implements Collidable{
         init();
         currentAnimation.start();
 
+    }
+
+    public SoundEffect getHitSound() {
+        return hitSound;
     }
 
     public int getCenterX(){

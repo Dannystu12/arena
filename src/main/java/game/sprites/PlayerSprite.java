@@ -7,6 +7,7 @@ import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
 import game.sounds.SoundEffect;
 import game.sprites.enemies.EnemySprite;
+import game.sprites.enemies.RatSprite;
 import game.sprites.enemies.SlimeSprite;
 import models.characters.enemies.Enemy;
 import models.characters.players.Player;
@@ -93,6 +94,8 @@ public class PlayerSprite extends Sprite implements Collidable{
                             new DamagePopup(healthBefore - healthAfter,
                                     enemy.getCenterX(),
                                     enemy.getCenterY(), e.lastAttackWasCrit()));
+
+                    enemy.getHitSound().play();
                     hasHit = true;
                     if(e.isDead()) hasKilled =  true;
                 }
@@ -101,9 +104,7 @@ public class PlayerSprite extends Sprite implements Collidable{
 
         if(hasKilled){
             SoundEffect.PUFF_OF_SMOKE.play();
-        } else if(hasHit){
-            SoundEffect.HERO_HIT.play();
-        } else {
+        } else if(!hasHit){
             SoundEffect.HERO_MISS.play();
         }
     }

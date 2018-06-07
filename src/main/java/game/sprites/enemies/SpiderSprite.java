@@ -15,7 +15,7 @@ import java.awt.*;
 public class SpiderSprite extends EnemySprite{
 
     public SpiderSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Spider(), "/sprites/enemies/chara_spider.png");
+        super(screen, x, y, new Spider(), "/sprites/enemies/chara_spider.png", SoundEffect.SPIDER_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){

@@ -15,7 +15,7 @@ import java.awt.*;
 public class OrcSprite extends EnemySprite{
 
     public OrcSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Orc(), "/sprites/enemies/chara_orc.png");
+        super(screen, x, y, new Orc(), "/sprites/enemies/chara_orc.png", SoundEffect.ORC_HIT);
     }
 
     public void attack(Rectangle attackBox, Direction direction){
@@ -33,7 +33,7 @@ public class OrcSprite extends EnemySprite{
                                 ps.getCenterY(), p.lastAttackWasCrit()));
                 SoundEffect.ENEMY_HIT_PLAYER.play();
             } else {
-                SoundEffect.SLIME_MISS.play();
+                SoundEffect.ORC_MISS.play();
             }
 
         }
