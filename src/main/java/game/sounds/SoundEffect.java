@@ -12,12 +12,12 @@ public enum SoundEffect {
     HERO_MISS("/sounds/hero_miss.wav"),
     SLIME_HIT("/sounds/slime_hit.wav"),
     SLIME_MISS("/sounds/slime_miss.wav"),
-    PUFF_OF_SMOKE("/sounds/puff_of_smoke.wav");
+    PUFF_OF_SMOKE("/sounds/puff_of_smoke.wav"),
+    TAKE_POTION("/sounds/potion.wav");
 
 
     // Each sound effect has its own clip, loaded with its own sound file.
     private Clip clip;
-    private final float VOLUME = 1f;
 
     // Constructor to construct each element of the enum with its own sound file.
     SoundEffect(String soundFileName) {

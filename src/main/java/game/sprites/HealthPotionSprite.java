@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class HealthPotionSprite extends Sprite {
+public class HealthPotionSprite extends Sprite implements Pickupable{
     private final int MOVE_AMOUNT = 2;
     private final String SPRITE_SHEET_PATH = "/sprites/powerups/health_potion.png";
     private final int SCALE_FACTOR = 2;
@@ -40,5 +40,13 @@ public class HealthPotionSprite extends Sprite {
         g2d.drawImage(currentAnimation.getSprite(), x, y,
                 currentAnimation.getSprite().getWidth() * SCALE_FACTOR,
                 currentAnimation.getSprite().getHeight()* SCALE_FACTOR, null);
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        int w = currentAnimation.getSprite().getWidth() * SCALE_FACTOR;
+        int h = currentAnimation.getSprite().getHeight() * SCALE_FACTOR;
+        //Divide by 2 to let player choose to walk over potion
+        return new Rectangle(x + w/2 ,y + h/2, w/2, h/2);
     }
 }

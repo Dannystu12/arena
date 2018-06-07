@@ -25,7 +25,7 @@ public class ArenaScreen extends Screen {
     private ArrayList<SlimeSprite> enemies;
     private ArrayList<Collidable> collidables;
     private ArrayList<DamagePopup> damagePopups;
-    private ArrayList<HealthPotionSprite> potions;
+    private ArrayList<Pickupable> pickups;
     private Random rng;
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 580;
@@ -48,7 +48,7 @@ public class ArenaScreen extends Screen {
         player = new PlayerSprite(this, getSpawnX(), getSpawnY());
         damagePopups = new ArrayList<>();
         enemies = new ArrayList<>();
-        potions = new ArrayList<>();
+        pickups = new ArrayList<>();
         collidables = new ArrayList<>();
         collidables.add(player);
         lastSpawn = System.currentTimeMillis();
@@ -122,6 +122,10 @@ public class ArenaScreen extends Screen {
         return collidables;
     }
 
+    public ArrayList<Pickupable> getPickups(){
+        return pickups;
+    }
+
     @Override
     public void onCreate() {
 
@@ -164,6 +168,8 @@ public class ArenaScreen extends Screen {
         }
 
         player.onUpdate();
+         // remove consumables taken
+        pickups.removeIf(Objects::isNull);
 
 
         for(int i = 0; i < enemies.size(); i++){
@@ -174,7 +180,7 @@ public class ArenaScreen extends Screen {
 
                 // Create potion
                 if(rng.nextInt(21) != 20){
-                    potions.add(new HealthPotionSprite(this,slime.getCenterX() - 8, slime.getCenterY() - 8));
+                    pickups.add(new HealthPotionSprite(this,slime.getCenterX() - 8, slime.getCenterY() - 8));
                 }
 
             } else {
@@ -202,8 +208,8 @@ public class ArenaScreen extends Screen {
     public void onDraw(Graphics2D g2d) {
         g2d.drawImage(background, 0,0,null);
 
-        for(int i = 0; i < potions.size(); i++){
-            potions.get(i).onDraw(g2d);
+        for(int i = 0; i < pickups.size(); i++){
+            if(pickups.get(i) != null) ((Sprite) pickups.get(i)).onDraw(g2d);
         }
 
         for(int i = 0; i < enemies.size(); i++){
