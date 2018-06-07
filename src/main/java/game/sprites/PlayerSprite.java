@@ -6,6 +6,7 @@ import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
 import game.sounds.SoundEffect;
+import game.sprites.enemies.EnemySprite;
 import game.sprites.enemies.SlimeSprite;
 import models.characters.enemies.Enemy;
 import models.characters.players.Player;
@@ -80,7 +81,7 @@ public class PlayerSprite extends Sprite implements Collidable{
     public void attack(Rectangle attackBox, Direction direction){
         boolean hasHit = false;
         boolean hasKilled = false;
-        for(SlimeSprite enemy : ((ArenaScreen) screen).getEnemies()){
+        for(EnemySprite enemy : ((ArenaScreen) screen).getEnemies()){
             if(attackBox.intersects(enemy.getBounds())){
                 Enemy e = enemy.getEnemy();
                 int healthBefore = e.getHp();

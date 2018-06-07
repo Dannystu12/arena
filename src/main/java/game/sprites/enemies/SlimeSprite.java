@@ -35,7 +35,7 @@ public class SlimeSprite extends EnemySprite {
                         new DamagePopup(healthBefore - healthAfter,
                                 ps.getCenterX(),
                                 ps.getCenterY(), p.lastAttackWasCrit()));
-                SoundEffect.SLIME_HIT.play();
+                SoundEffect.ENEMY_HIT_PLAYER.play();
             } else {
                 SoundEffect.SLIME_MISS.play();
             }

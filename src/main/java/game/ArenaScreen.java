@@ -7,6 +7,8 @@ import game.environments.Wall;
 import game.sounds.Announcer;
 import game.sounds.SoundEffect;
 import game.sprites.*;
+import game.sprites.enemies.EnemySprite;
+import game.sprites.enemies.GoblinSprite;
 import game.sprites.enemies.SlimeSprite;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
@@ -23,7 +25,7 @@ public class ArenaScreen extends Screen {
 
     private int x = 0, y = 0;
     private final PlayerSprite player;
-    private ArrayList<SlimeSprite> enemies;
+    private ArrayList<EnemySprite> enemies;
     private ArrayList<Collidable> collidables;
     private ArrayList<DamagePopup> damagePopups;
     private ArrayList<Pickupable> pickups;
@@ -41,6 +43,7 @@ public class ArenaScreen extends Screen {
     private boolean paused;
     private boolean spaceReleased;
     private boolean gameOver;
+    private ArrayList<Class> enemyTypes;
 
 
     public ArenaScreen(ScreenFactory screenFactory) {
@@ -52,6 +55,9 @@ public class ArenaScreen extends Screen {
         enemies = new ArrayList<>();
         pickups = new ArrayList<>();
         collidables = new ArrayList<>();
+        enemyTypes = new ArrayList<>();
+        enemyTypes.add(SlimeSprite.class);
+        enemyTypes.add(GoblinSprite.class);
         collidables.add(player);
         lastSpawn = System.currentTimeMillis();
 
@@ -108,12 +114,12 @@ public class ArenaScreen extends Screen {
         collidables.add(c);
     }
 
-    private void addEnemy(SlimeSprite slimeSprite) {
-        enemies.add(slimeSprite);
-        collidables.add(slimeSprite);
+    private void addEnemy(EnemySprite enemySprite) {
+        enemies.add(enemySprite);
+        collidables.add(enemySprite);
     }
 
-    public ArrayList<SlimeSprite> getEnemies() {
+    public ArrayList<EnemySprite> getEnemies() {
         return enemies;
     }
 
@@ -164,7 +170,13 @@ public class ArenaScreen extends Screen {
 
         //Spawn enemies if appropriate
         if(enemies.isEmpty() || System.currentTimeMillis() - lastSpawn >= spawnDelay){
-            SlimeSprite enemy = new SlimeSprite(this, getSpawnX(), getSpawnY());
+            Class enemyClass = enemyTypes.get(rng.nextInt(enemyTypes.size()));
+            EnemySprite enemy = null;
+            try {
+                enemy = (EnemySprite) enemyClass.getDeclaredConstructor(Screen.class, int.class, int.class).newInstance(this, getSpawnX(), getSpawnY());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             addEnemy(enemy);
             while(enemy.checkCollisions()){
                 enemy.setX(getSpawnX());
@@ -186,14 +198,14 @@ public class ArenaScreen extends Screen {
 
 
         for(int i = 0; i < enemies.size(); i++){
-            SlimeSprite slime = enemies.get(i);
-            if(slime.isDead()){
+            EnemySprite enemy = enemies.get(i);
+            if(enemy.isDead()){
                 enemies.set(i, null);
                 killCount += 1;
 
                 // Create potion
                 if(rng.nextInt(11) == 10){
-                    pickups.add(new HealthPotionSprite(this,slime.getCenterX() - 8, slime.getCenterY() - 8));
+                    pickups.add(new HealthPotionSprite(this,enemy.getCenterX() - 8, enemy.getCenterY() - 8));
                 }
 
                 // Play announcer
@@ -202,7 +214,7 @@ public class ArenaScreen extends Screen {
                 }
 
             } else {
-                slime.onUpdate(player);
+                enemy.onUpdate(player);
             }
         }
 
@@ -231,7 +243,7 @@ public class ArenaScreen extends Screen {
         }
 
         for(int i = 0; i < enemies.size(); i++){
-            SlimeSprite enemy =  enemies.get(i);
+            EnemySprite enemy =  enemies.get(i);
             if(enemy != null) enemy.onDraw(g2d);
         }
 

@@ -10,7 +10,7 @@ public enum SoundEffect {
 
     HERO_HIT("/sounds/hero_hit.wav"),
     HERO_MISS("/sounds/hero_miss.wav"),
-    SLIME_HIT("/sounds/slime_hit.wav"),
+    ENEMY_HIT_PLAYER("/sounds/enemy_hit_player.wav"),
     SLIME_MISS("/sounds/slime_miss.wav"),
     PUFF_OF_SMOKE("/sounds/puff_of_smoke.wav"),
     TAKE_POTION("/sounds/potion.wav"),
