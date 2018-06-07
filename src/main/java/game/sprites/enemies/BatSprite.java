@@ -3,17 +3,19 @@ package game.sprites.enemies;
 import engine.Screen;
 import game.ArenaScreen;
 import game.sounds.SoundEffect;
-import game.sprites.*;
-import models.characters.enemies.Goblin;
+import game.sprites.DamagePopup;
+import game.sprites.Direction;
+import game.sprites.PlayerSprite;
+import models.characters.enemies.Bat;
 import models.characters.enemies.Slime;
 import models.characters.players.Player;
 
 import java.awt.*;
 
-public class GoblinSprite extends EnemySprite{
+public class BatSprite extends EnemySprite{
 
-    public GoblinSprite(Screen screen, int x, int y){
-        super(screen, x, y, new Goblin(), "/sprites/enemies/chara_goblin.png");
+    public BatSprite(Screen screen, int x, int y){
+        super(screen, x, y, new Bat(), "/sprites/enemies/chara_bat.png");
     }
 
     public void attack(Rectangle attackBox, Direction direction){

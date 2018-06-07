@@ -7,9 +7,7 @@ import game.environments.Wall;
 import game.sounds.Announcer;
 import game.sounds.SoundEffect;
 import game.sprites.*;
-import game.sprites.enemies.EnemySprite;
-import game.sprites.enemies.GoblinSprite;
-import game.sprites.enemies.SlimeSprite;
+import game.sprites.enemies.*;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -58,6 +56,11 @@ public class ArenaScreen extends Screen {
         enemyTypes = new ArrayList<>();
         enemyTypes.add(SlimeSprite.class);
         enemyTypes.add(GoblinSprite.class);
+        enemyTypes.add(RatSprite.class);
+        enemyTypes.add(BatSprite.class);
+        enemyTypes.add(SpiderSprite.class);
+        enemyTypes.add(OrcSprite.class);
+        enemyTypes.add(TrollSprite.class);
         collidables.add(player);
         lastSpawn = System.currentTimeMillis();
 
