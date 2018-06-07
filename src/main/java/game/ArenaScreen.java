@@ -4,6 +4,7 @@ import engine.Screen;
 import engine.ScreenFactory;
 import engine.sprite.BufferedImageLoader;
 import game.environments.Wall;
+import game.sounds.Announcer;
 import game.sounds.SoundEffect;
 import game.sprites.*;
 import models.characters.enemies.Enemy;
@@ -74,6 +75,7 @@ public class ArenaScreen extends Screen {
         SoundEffect.init();
 
         startBackgroundMusic("/music/bgm.wav");
+        SoundEffect.FIGHT.play();
     }
 
     public void addDamagePopup(DamagePopup dp){
@@ -185,6 +187,11 @@ public class ArenaScreen extends Screen {
                 // Create potion
                 if(rng.nextInt(11) == 10){
                     pickups.add(new HealthPotionSprite(this,slime.getCenterX() - 8, slime.getCenterY() - 8));
+                }
+
+                // Play announcer
+                if(rng.nextInt(11) == 10){
+                    Announcer.values()[rng.nextInt(Announcer.values().length)].play();
                 }
 
             } else {
