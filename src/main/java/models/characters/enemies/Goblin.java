@@ -4,6 +4,6 @@ import models.utils.Dice;
 
 public class Goblin extends Enemy {
     public Goblin(){
-        super(Dice.roll(6) + Dice.roll(6), 10, 6);
+        super(Dice.roll(8) + 4, 9, 10);
     }
 }

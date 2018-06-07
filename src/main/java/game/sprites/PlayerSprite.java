@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class PlayerSprite extends Sprite implements Collidable{
 
-    private final int MOVE_AMOUNT = 2;
+    private final double MOVE_AMOUNT = 2;
     private final String SPRITE_SHEET_PATH = "/sprites/hero/chara_hero.png";
     private final int SCALE_FACTOR = 2;
     private Animator currentAnimation;

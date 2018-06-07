@@ -3,7 +3,7 @@ package models.enums;
 import models.utils.Dice;
 
 public enum Consumable {
-    HEALTH_POTION(2,4,2);
+    HEALTH_POTION(3,10,3);
 
     private int numDice;
     private int numSides;

@@ -31,9 +31,9 @@ public class ArenaScreen extends Screen {
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 580;
     private long lastSpawn;
-    private int spawnDelay = 5000;
+    private int spawnDelay = 4500;
     private final int SPAWN_REDUCTION = 100;
-    private final int SPAWN_MIN = 250;
+    private final int SPAWN_MIN = 1000;
     private int killCount;
     private static Font font;
     private static Font hudFont;
@@ -42,6 +42,7 @@ public class ArenaScreen extends Screen {
     private boolean spaceReleased;
     private boolean gameOver;
     private ArrayList<Class> enemyTypes;
+    private int maxEnemyCount = 5;
 
 
     public ArenaScreen(ScreenFactory screenFactory) {
@@ -54,13 +55,7 @@ public class ArenaScreen extends Screen {
         pickups = new ArrayList<>();
         collidables = new ArrayList<>();
         enemyTypes = new ArrayList<>();
-        enemyTypes.add(SlimeSprite.class);
-        enemyTypes.add(GoblinSprite.class);
         enemyTypes.add(RatSprite.class);
-        enemyTypes.add(BatSprite.class);
-        enemyTypes.add(SpiderSprite.class);
-        enemyTypes.add(OrcSprite.class);
-        enemyTypes.add(TrollSprite.class);
         collidables.add(player);
         lastSpawn = System.currentTimeMillis();
 
@@ -172,7 +167,7 @@ public class ArenaScreen extends Screen {
         }
 
         //Spawn enemies if appropriate
-        if(enemies.isEmpty() || System.currentTimeMillis() - lastSpawn >= spawnDelay){
+        if(enemies.isEmpty() || System.currentTimeMillis() - lastSpawn >= spawnDelay && enemies.size() < maxEnemyCount){
             Class enemyClass = enemyTypes.get(rng.nextInt(enemyTypes.size()));
             EnemySprite enemy = null;
             try {
@@ -206,6 +201,22 @@ public class ArenaScreen extends Screen {
                 enemies.set(i, null);
                 killCount += 1;
 
+                //Add new enemies after certain number of kills
+                if(killCount == 5){
+                    enemyTypes.add(BatSprite.class);
+                } else if(killCount == 10) {
+                    enemyTypes.add(SpiderSprite.class);
+                } else if (killCount == 20){
+                    enemyTypes.add(SlimeSprite.class);
+                } else if (killCount == 50){
+                    enemyTypes.add(GoblinSprite.class);
+                } else if (killCount == 75){
+                    enemyTypes.add(OrcSprite.class);
+                } else if(killCount == 100){
+                    enemyTypes.add(TrollSprite.class);
+                }
+
+
                 // Create potion
                 if(rng.nextInt(11) == 10){
                     pickups.add(new HealthPotionSprite(this,enemy.getCenterX() - 8, enemy.getCenterY() - 8));
@@ -234,6 +245,9 @@ public class ArenaScreen extends Screen {
 
         //cleanup null references in collidables
         collidables.removeIf(Objects::isNull);
+
+        //adjust max enemy count
+        maxEnemyCount = Math.min(Math.max(killCount / 10, maxEnemyCount), 20);
 
     }
 

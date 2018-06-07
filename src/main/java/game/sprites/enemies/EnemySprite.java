@@ -19,7 +19,7 @@ import java.util.Random;
 public abstract class EnemySprite extends Sprite implements Collidable{
 
 
-    protected final int MOVE_AMOUNT = 1;
+    protected final double MOVE_AMOUNT = 1;
     protected final String SMOKE_SHEET_PATH = "/sprites/effects/smoke.png";
     protected String SPRITE_SHEET_PATH;
     protected Animator currentAnimation;
@@ -38,6 +38,7 @@ public abstract class EnemySprite extends Sprite implements Collidable{
     public EnemySprite(Screen screen, int x, int y, Enemy enemy, String spriteSheetPath){
         super(screen, x, y);
         SPRITE_SHEET_PATH = spriteSheetPath;
+
         rng = new Random();
         lastAttack = System.currentTimeMillis();
         this.enemy = enemy;

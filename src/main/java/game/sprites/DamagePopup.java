@@ -18,6 +18,7 @@ public class DamagePopup {
     private static Font critFont;
     private boolean isCrit;
 
+
     public DamagePopup(int value, int x, int y, boolean isCrit){
         this.x = x;
         this.y = y;
@@ -50,7 +51,7 @@ public class DamagePopup {
         g2d.setFont(font);
 
         if(isCrit) {
-            g2d.setColor(Color.decode("#ffe226"));
+            g2d.setColor(Color.decode("#c14300"));
             g2d.setFont(critFont);
         }else if(value <= 0){
             g2d.setColor(Color.decode("#096b19"));
