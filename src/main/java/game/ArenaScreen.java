@@ -40,6 +40,7 @@ public class ArenaScreen extends Screen {
     private BufferedImage background;
     private boolean paused;
     private boolean spaceReleased;
+    private boolean gameOver;
 
 
     public ArenaScreen(ScreenFactory screenFactory) {
@@ -137,7 +138,13 @@ public class ArenaScreen extends Screen {
     public void onUpdate() {
 
         // Dont update if player is dead
-        if(player.getPlayer().isDead()) return;
+        if(player.getPlayer().isDead()){
+            if(!gameOver){
+                gameOver = true;
+                SoundEffect.LAUGH.play();
+            }
+            return;
+        }
 
         // Dont update if game is paused
         if(getScreenFactory().getGame().getKeyboardListener().isKeyPressed(KeyEvent.VK_SPACE)

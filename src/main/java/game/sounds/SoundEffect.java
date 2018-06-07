@@ -14,6 +14,7 @@ public enum SoundEffect {
     SLIME_MISS("/sounds/slime_miss.wav"),
     PUFF_OF_SMOKE("/sounds/puff_of_smoke.wav"),
     TAKE_POTION("/sounds/potion.wav"),
+    LAUGH("/sounds/announcer/laugh.wav"),
     FIGHT("/sounds/announcer/fight.wav");
 
 

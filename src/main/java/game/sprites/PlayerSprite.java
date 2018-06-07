@@ -134,6 +134,7 @@ public class PlayerSprite extends Sprite implements Collidable{
             HIT_FROM_LEFT = getAnimator(ss, 9, 4, 48, 48,100, true, false);
             HIT_FROM_RIGHT = getAnimator(ss, 9, 4, 48, 48,100, false, false);
             HIT_FROM_ABOVE = getAnimator(ss, 10, 4, 48, 48,100, false, false);
+            HIT_FROM_BELOW = getAnimator(ss, 8, 4, 48, 48,100, false, false);
             CONSUME = getAnimator(ss, 1, 3, 48, 48,100, false, false);
 
 

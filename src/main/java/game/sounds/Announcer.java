@@ -9,7 +9,6 @@ public enum Announcer {
     FIGHT("/sounds/announcer/fatality.wav"),
     FLAWLESS("/sounds/announcer/flawless.wav"),
     VICTORY("/sounds/announcer/victory.wav"),
-    LAUGH("/sounds/announcer/laugh.wav"),
     WELL_DONE("/sounds/announcer/well_done.wav"),
     OUTSTANDING("/sounds/announcer/outstanding.wav"),
     IMPRESSIVE("/sounds/announcer/impressive.wav"),
