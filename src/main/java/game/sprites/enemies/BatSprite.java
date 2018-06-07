@@ -33,7 +33,7 @@ public class BatSprite extends EnemySprite{
                                 ps.getCenterY(), p.lastAttackWasCrit()));
                 SoundEffect.ENEMY_HIT_PLAYER.play();
             } else {
-                SoundEffect.SLIME_MISS.play();
+                SoundEffect.BAT_MISS.play();
             }
 
         }
