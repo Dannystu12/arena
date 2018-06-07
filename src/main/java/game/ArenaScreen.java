@@ -5,10 +5,7 @@ import engine.ScreenFactory;
 import engine.sprite.BufferedImageLoader;
 import game.environments.Wall;
 import game.sounds.SoundEffect;
-import game.sprites.Collidable;
-import game.sprites.DamagePopup;
-import game.sprites.PlayerSprite;
-import game.sprites.SlimeSprite;
+import game.sprites.*;
 import models.characters.enemies.Enemy;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
@@ -28,6 +25,7 @@ public class ArenaScreen extends Screen {
     private ArrayList<SlimeSprite> enemies;
     private ArrayList<Collidable> collidables;
     private ArrayList<DamagePopup> damagePopups;
+    private ArrayList<HealthPotionSprite> potions;
     private Random rng;
     private final int SCREEN_WIDTH = 800;
     private final int SCREEN_HEIGHT = 580;
@@ -50,6 +48,7 @@ public class ArenaScreen extends Screen {
         player = new PlayerSprite(this, getSpawnX(), getSpawnY());
         damagePopups = new ArrayList<>();
         enemies = new ArrayList<>();
+        potions = new ArrayList<>();
         collidables = new ArrayList<>();
         collidables.add(player);
         lastSpawn = System.currentTimeMillis();
@@ -172,6 +171,12 @@ public class ArenaScreen extends Screen {
             if(slime.isDead()){
                 enemies.set(i, null);
                 killCount += 1;
+
+                // Create potion
+                if(rng.nextInt(21) != 20){
+                    potions.add(new HealthPotionSprite(this,slime.getCenterX() - 8, slime.getCenterY() - 8));
+                }
+
             } else {
                 slime.onUpdate(player);
             }
@@ -197,6 +202,9 @@ public class ArenaScreen extends Screen {
     public void onDraw(Graphics2D g2d) {
         g2d.drawImage(background, 0,0,null);
 
+        for(int i = 0; i < potions.size(); i++){
+            potions.get(i).onDraw(g2d);
+        }
 
         for(int i = 0; i < enemies.size(); i++){
             SlimeSprite enemy =  enemies.get(i);
@@ -237,6 +245,7 @@ public class ArenaScreen extends Screen {
         FontMetrics metrics = g.getFontMetrics(font);
         int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
         int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+        g.setColor(Color.decode("#ffffff"));
         g.setFont(font);
         g.drawString(text, x, y);
     }
@@ -244,8 +253,15 @@ public class ArenaScreen extends Screen {
     private void drawKillCount(Graphics g){
         String text = String.format("Kills % 3d", killCount);
         FontMetrics metrics = g.getFontMetrics(hudFont);
+
+        //Create rectangle to make easier to read
+        Color c = Color.decode("#8c1d04");
+        g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 150));
+        g.fillRect(SCREEN_WIDTH - metrics.stringWidth(text) - 20, 0, metrics.stringWidth(text) + 8,
+                metrics.getHeight());
+
         g.setFont(hudFont);
-        g.setColor(Color.decode("#8c1d04"));
+        g.setColor(Color.decode("#ffffff"));
         g.drawString(text, SCREEN_WIDTH - metrics.stringWidth(text) - 16, 24);
     }
 
@@ -253,8 +269,16 @@ public class ArenaScreen extends Screen {
         double healthPct = player.getPlayer().getHp() / ((double) player.getPlayer().getMAX_HP()) * 100;
         String text = String.format("Health % 3.0f", healthPct);
         FontMetrics metrics = g.getFontMetrics(hudFont);
+
+        //Create rectangle to make easier to read
+        Color c = Color.decode("#8c1d04");
+        g.setColor(new Color(c.getRed(), c.getGreen(), c.getBlue(), 150));
+        g.fillRect(12, 0, metrics.stringWidth(text) + 8,
+                metrics.getHeight());
+
+
         g.setFont(hudFont);
-        g.setColor(Color.decode("#8c1d04"));
+        g.setColor(Color.decode("#ffffff"));
         g.drawString(text, 16, 24);
     }
 
