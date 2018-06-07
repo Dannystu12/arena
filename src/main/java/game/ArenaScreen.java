@@ -224,7 +224,7 @@ public class ArenaScreen extends Screen {
         //Cleanup collidables for deleted enemies
         for(int i = 0; i < collidables.size(); i++){
             Collidable c = collidables.get(i);
-            if(c instanceof SlimeSprite && !enemies.contains(c)){
+            if(c instanceof EnemySprite && !enemies.contains(c)){
                 collidables.set(i, null);
             }
         }
