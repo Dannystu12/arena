@@ -7,7 +7,7 @@ import game.environments.Wall;
 import game.sounds.Announcer;
 import game.sounds.SoundEffect;
 import game.sprites.*;
-import models.characters.enemies.Enemy;
+import game.sprites.enemies.SlimeSprite;
 import sun.audio.AudioData;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;

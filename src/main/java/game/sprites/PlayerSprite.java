@@ -6,6 +6,7 @@ import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
 import game.sounds.SoundEffect;
+import game.sprites.enemies.SlimeSprite;
 import models.characters.enemies.Enemy;
 import models.characters.players.Player;
 import models.characters.players.Warrior;
@@ -32,6 +33,7 @@ public class PlayerSprite extends Sprite implements Collidable{
     public PlayerSprite(Screen screen, int x, int y){
         super(screen,x, y);
         player = new Warrior();
+        init();
         currentAnimation.start();
         lastAttack = System.currentTimeMillis();
     }
@@ -55,9 +57,6 @@ public class PlayerSprite extends Sprite implements Collidable{
         for(int i = 0; i < pickups.size(); i++){
             Pickupable pickup = pickups.get(i);
             if(getBounds().intersects(pickup.getBounds()) && pickup.isActive()){
-//                currentAnimation.stop();
-//                currentAnimation = CONSUME;
-//                currentAnimation.start();
                 int healthBefore = player.getHp();
                 player.takeConsumable(pickup.getConsumable());
                 int healthAfter = player.getHp();

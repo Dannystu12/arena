@@ -18,7 +18,6 @@ public abstract class Sprite {
         this.x = x;
         this.y = y;
         this.screen = screen;
-        init();
     }
 
     protected abstract void init();

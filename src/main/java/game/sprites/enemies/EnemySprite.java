@@ -1,4 +1,4 @@
-package game.sprites;
+package game.sprites.enemies;
 
 import engine.Screen;
 import engine.sprite.Animator;
@@ -6,6 +6,7 @@ import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
 import game.ArenaScreen;
 import game.sounds.SoundEffect;
+import game.sprites.*;
 import models.characters.enemies.Enemy;
 import models.characters.enemies.Slime;
 import models.characters.players.Player;
@@ -15,30 +16,35 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SlimeSprite extends Sprite implements Collidable{
-
-    private final int MOVE_AMOUNT = 1;
-    private final String SPRITE_SHEET_PATH = "/sprites/enemies/slime/chara_slime.png";
-    private final String SMOKE_SHEET_PATH = "/sprites/effects/smoke.png";
-    private Animator currentAnimation;
-    private Random rng;
-    private final int TIME_BETWEEN_ATTACKS = 1000;
-    private long lastAttack;
-    private final int SCALE_FACTOR = 2;
-    private Enemy enemy;
+public abstract class EnemySprite extends Sprite implements Collidable{
 
 
-    private Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
-        HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW, DEATH;
+    protected final int MOVE_AMOUNT = 1;
+    protected final String SMOKE_SHEET_PATH = "/sprites/effects/smoke.png";
+    protected String SPRITE_SHEET_PATH;
+    protected Animator currentAnimation;
+    protected Random rng;
+    protected final int TIME_BETWEEN_ATTACKS = 1000;
+    protected long lastAttack;
+    protected final int SCALE_FACTOR = 2;
+    protected Enemy enemy;
 
-    private ArrayList<Animator> dontInterrupt;
 
-    public SlimeSprite(Screen screen, int x, int y){
+    protected Animator IDLE, WALK_RIGHT, WALK_UP, WALK_DOWN, WALK_LEFT, ATTACK_UP, ATTACK_DOWN, ATTACK_LEFT, ATTACK_RIGHT,
+            HIT_FROM_LEFT, HIT_FROM_RIGHT, HIT_FROM_ABOVE, HIT_FROM_BELOW, DEATH;
+
+    protected ArrayList<Animator> dontInterrupt;
+
+    public EnemySprite(Screen screen, int x, int y, Enemy enemy, String spriteSheetPath){
         super(screen, x, y);
+        SPRITE_SHEET_PATH = spriteSheetPath;
         rng = new Random();
-        enemy = new Slime();
         lastAttack = System.currentTimeMillis();
+        this.enemy = enemy;
+        dontInterrupt = new ArrayList<>();
+        init();
         currentAnimation.start();
+
     }
 
     public int getCenterX(){
@@ -117,26 +123,7 @@ public class SlimeSprite extends Sprite implements Collidable{
     }
 
 
-    public void attack(Rectangle attackBox, Direction direction){
-        PlayerSprite ps = ((ArenaScreen) screen).getPlayer();
-        if(attackBox.intersects(ps.getBounds())) {
-            Player p = ps.getPlayer();
-            int healthBefore = p.getHp();
-            enemy.attack(p);
-            int healthAfter = p.getHp();
-            if (healthBefore > healthAfter) {
-                ps.takeHit(direction);
-                ((ArenaScreen) screen).addDamagePopup(
-                        new DamagePopup(healthBefore - healthAfter,
-                                ps.getCenterX(),
-                                ps.getCenterY(), p.lastAttackWasCrit()));
-                SoundEffect.SLIME_HIT.play();
-            } else {
-                SoundEffect.SLIME_MISS.play();
-            }
-
-        }
-    }
+    public abstract void attack(Rectangle attackBox, Direction direction);
 
     public void takeHit(Direction d){
 
