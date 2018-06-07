@@ -5,6 +5,7 @@ import engine.Screen;
 import engine.sprite.Animator;
 import engine.sprite.BufferedImageLoader;
 import engine.sprite.SpriteSheet;
+import models.enums.Consumable;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,10 +17,31 @@ public class HealthPotionSprite extends Sprite implements Pickupable{
     private final int SCALE_FACTOR = 2;
     private Animator currentAnimation;
     private static Animator DEFAULT;
+    private Consumable consumable = Consumable.HEALTH_POTION;
+    private boolean isActive = false;
+    private final int DELAY = 300;
+    private final long CREATION_TIME;
 
     public HealthPotionSprite(Screen screen, int x, int y) {
         super(screen, x, y);
         init();
+        CREATION_TIME = System.currentTimeMillis();
+    }
+
+    @Override
+    public boolean isActive() {
+        return isActive;
+    }
+
+    @Override
+    public Consumable getConsumable(){
+        return consumable;
+    }
+
+    public void onUpdate(){
+        if(System.currentTimeMillis() - CREATION_TIME >= DELAY){
+            isActive = true;
+        }
     }
 
     @Override

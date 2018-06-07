@@ -149,6 +149,10 @@ public class ArenaScreen extends Screen {
 
         if(paused) return;
 
+        for(int i = 0; i < pickups.size(); i++){
+            if(pickups.get(i) != null) ((HealthPotionSprite) pickups.get(i)).onUpdate();
+        }
+
         //Spawn enemies if appropriate
         if(enemies.isEmpty() || System.currentTimeMillis() - lastSpawn >= spawnDelay){
             SlimeSprite enemy = new SlimeSprite(this, getSpawnX(), getSpawnY());
@@ -179,7 +183,7 @@ public class ArenaScreen extends Screen {
                 killCount += 1;
 
                 // Create potion
-                if(rng.nextInt(21) != 20){
+                if(rng.nextInt(11) == 10){
                     pickups.add(new HealthPotionSprite(this,slime.getCenterX() - 8, slime.getCenterY() - 8));
                 }
 

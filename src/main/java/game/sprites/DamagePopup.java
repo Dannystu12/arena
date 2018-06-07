@@ -53,12 +53,12 @@ public class DamagePopup {
             g2d.setColor(Color.decode("#ffe226"));
             g2d.setFont(critFont);
         }else if(value <= 0){
-            g2d.setColor(Color.decode("#34438e"));
+            g2d.setColor(Color.decode("#096b19"));
         } else {
             g2d.setColor(Color.decode("#8c1d04"));
         }
 
-        g2d.drawString(Integer.toString(value), x, y);
+        g2d.drawString(Integer.toString(Math.abs(value)), x, y);
     }
 
 

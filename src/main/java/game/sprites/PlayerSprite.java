@@ -54,10 +54,15 @@ public class PlayerSprite extends Sprite implements Collidable{
         ArrayList<Pickupable> pickups= ((ArenaScreen) screen).getPickups();
         for(int i = 0; i < pickups.size(); i++){
             Pickupable pickup = pickups.get(i);
-            if(getBounds().intersects(pickup.getBounds())){
-                currentAnimation.stop();
-                currentAnimation = CONSUME;
-                currentAnimation.start();
+            if(getBounds().intersects(pickup.getBounds()) && pickup.isActive()){
+//                currentAnimation.stop();
+//                currentAnimation = CONSUME;
+//                currentAnimation.start();
+                int healthBefore = player.getHp();
+                player.takeConsumable(pickup.getConsumable());
+                int healthAfter = player.getHp();
+                DamagePopup dp = new DamagePopup(-(healthAfter - healthBefore), x, y, false);
+                ((ArenaScreen) screen).addDamagePopup(dp);
                 SoundEffect.TAKE_POTION.play();
                 pickups.set(i, null);
             }
